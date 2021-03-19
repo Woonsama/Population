@@ -24,7 +24,7 @@ public class WaveData
 {
     public Wave wave;
 
-    WaveData()
+    public WaveData()
     {
         wave.curWave = 1;
         wave.isWaveAllClear = false;
@@ -38,6 +38,16 @@ public class WaveData
     public bool GetIsWaveAllClear()
     {
         return wave.isWaveAllClear;
+    }
+
+    public void Do_LoadData()
+    {
+
+    }
+
+    public void Do_SaveData()
+    {
+
     }
 }
 
@@ -53,5 +63,15 @@ public class ScoreData
     public void AddScore(int score)
     {
         this.score += score;
+    }
+
+    public void Do_LoadData()
+    {
+
+    }
+
+    public void Do_SaveData()
+    {
+
     }
 }

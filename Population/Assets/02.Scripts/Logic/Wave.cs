@@ -14,11 +14,11 @@ public class Wave
 
     public void WaveClear()
     {
-        if(wave < c_Max_Wave)
+        if(curWave < c_Max_Wave)
         {
-            wave++;
+            curWave++;
         }
-        else if(wave == c_Max_Wave)
+        else if(curWave == c_Max_Wave)
         {
             isWaveAllClear = true;
         }
