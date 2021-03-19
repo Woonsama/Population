@@ -22,7 +22,7 @@ public class TestData
 
 public class WaveData
 {
-    public Wave wave;
+    public Wave wave = new Wave();
 
     public WaveData()
     {

@@ -39,8 +39,8 @@ public class CitizenCountData
     public int womenCnt;
     public int oldCnt;
 
-    public CitizenCountData()
+    public int GetTotalCitizenCount()
     {
-
+        return youngCnt + manCnt + womenCnt + oldCnt;
     }
 }

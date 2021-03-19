@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("플레이어")]
-    public GameObject player;
+    [Header("시민 컨트롤러")]
+    public CitizenController citizenController;
 
-    private CitizenController citizenController;
-    private DataManager dataManager;
+    [Header("플레이어 컨트롤러")]
+    public PlayerController playerController;
+
+    private DataManager dataManager = new DataManager();
 
     private void Awake()
     {
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
-        dataManager.LoadData();
+        playerController.CreatePlayer();
+        citizenController.Init();
     }
 }

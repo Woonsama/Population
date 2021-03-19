@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : ObjectBase, IMove
+public class Player : ObjectBase, IMove, ICatch
 {
     [Header("스테이터스")]
     public PlayerState state;
+
+    private bool isCatch = false;
+    private bool isNear = true;
 
     protected override IEnumerator OnAwakeCoroutine()
     {
@@ -16,6 +19,7 @@ public class Player : ObjectBase, IMove
     private void Update()
     {
         Move();
+        Catch();
     }
 
     public void Move()
@@ -29,6 +33,42 @@ public class Player : ObjectBase, IMove
         x.Log();
 
         transform.Translate(new Vector2(x, y));
+    }
+
+    public void Catch()
+    {
+        //가까이에 있으면서 시민을 안 잡고 있는 경우
+        if(isNear && !isCatch)
+        {
+            isCatch = true;
+        }
+        //가까이에 있으면서 시민을 이미 잡은 경우
+        else if(isNear && isCatch)
+        {
+            isCatch = false;
+        }
+        //가까이에 없으면서 시민을 안 잡고 있는 경우
+        else if(!isNear && !isCatch)
+        {
+
+        }
+        //가까이에 없으면서 시민을 잡고 있는 경우
+        else if (!isNear && isCatch)
+        {
+            isCatch = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "Citizen" && !isCatch)
+        {
+            isNear = true;
+        }
+        else
+        {
+            isNear = false;
+        }
     }
 }
 

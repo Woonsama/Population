@@ -6,3 +6,8 @@ public interface IMove
 {
     void Move();
 }
+
+public interface ICatch
+{
+    void Catch();
+}
