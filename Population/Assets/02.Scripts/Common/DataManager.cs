@@ -24,3 +24,23 @@ public class DataManager
         scoreData.Do_SaveData();
     }
 }
+
+public class CitizenData
+{
+    public CitizenCountData citizenCountData = new CitizenCountData();
+}
+
+[System.Serializable]
+
+public class CitizenCountData
+{
+    public int youngCnt;
+    public int manCnt;
+    public int womenCnt;
+    public int oldCnt;
+
+    public CitizenCountData()
+    {
+
+    }
+}
