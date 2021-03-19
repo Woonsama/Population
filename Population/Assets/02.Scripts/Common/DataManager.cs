@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataManager : SingletonMonoBase<DataManager>
+public class DataManager
 {
-    public TestData testData = new TestData();
+    public WaveData waveData = new WaveData();
+    public ScoreData scoreData = new ScoreData();
 
     public DataManager()
     {
@@ -13,11 +14,13 @@ public class DataManager : SingletonMonoBase<DataManager>
 
     public void LoadData()
     {
-        testData.Do_LoadData();
+        waveData.Do_LoadData();
+        scoreData.Do_LoadData();
     }
 
     public void SaveData()
     {
-        testData.Do_SaveData();
+        waveData.Do_SaveData();
+        scoreData.Do_SaveData();
     }
 }
