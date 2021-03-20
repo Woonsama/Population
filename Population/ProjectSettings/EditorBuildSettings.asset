@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scene/Kws_Test.unity
     guid: 932d22b27f6fcaa4e85958c6eb7ed1b7
+  - enabled: 1
+    path: Assets/01.Scene/Ending.unity
+    guid: 3772fa4697f3cf544865684e131d06b4
   m_configObjects: {}

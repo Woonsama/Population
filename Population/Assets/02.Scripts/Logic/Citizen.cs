@@ -24,8 +24,11 @@ public class Citizen : ObjectBase, IMove
 
     private SkeletonAnimation skeletonAnimation;
 
+    public AudioSource audioSource;
+
     protected override IEnumerator OnAwakeCoroutine()
     {
+        audioSource = GetComponent<AudioSource>();
         skeletonAnimation = GetComponent<SkeletonAnimation>();
         skeletonAnimation.state.SetAnimation(0, "idle", true);
 

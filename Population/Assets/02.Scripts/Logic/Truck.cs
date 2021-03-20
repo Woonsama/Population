@@ -26,6 +26,11 @@ public class Truck : ObjectBase
     [Header("클리어매니저")]
     public ClearManager clearManager;
 
+    [Header("사운드매니저")]
+    public SoundManager soundManager;
+
+    private AudioSource truckSource;
+
     [Header("차감 될 데이터 [포인트]")]
     public int youngCnt;
     public int manCnt;
@@ -37,6 +42,11 @@ public class Truck : ObjectBase
     {
         this.player = player;
         playerObj = player.gameObject;
+    }
+
+    private void Awake()
+    {
+        truckSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -83,18 +93,22 @@ public class Truck : ObjectBase
                     case Citizen.ECitizenType.Young:
                         dataManager.gameData.citizenCnt.youngCnt--;
                         dataManager.gameData.needPoint -= youngCnt;
+                        soundManager.PlayOnShot_YoungTruck(truckSource);
                         break;
                     case Citizen.ECitizenType.Man:
                         dataManager.gameData.citizenCnt.manCnt--;
                         dataManager.gameData.needPoint -= manCnt;
+                        soundManager.PlayOnShot_ManTruck(truckSource);
                         break;
                     case Citizen.ECitizenType.Women:
                         dataManager.gameData.citizenCnt.womenCnt--;
                         dataManager.gameData.needPoint -= womenCnt;
+                        soundManager.PlayOnShot_WomenTruck(truckSource);
                         break;
                     case Citizen.ECitizenType.Old:
                         dataManager.gameData.citizenCnt.oldCnt--;
                         dataManager.gameData.needPoint -= oldCnt;
+                        soundManager.PlayOnShot_OldTruck(truckSource);
                         break;
                     default:
                         break;

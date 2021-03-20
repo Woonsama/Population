@@ -715,6 +715,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource_BGM: {fileID: 1652903815}
   audioSource_Player_Walk: {fileID: 0}
+  clip_Young:
+  - {fileID: 8300000, guid: 84c20a378b4776c4683d1747a2e18b9a, type: 3}
+  - {fileID: 8300000, guid: e13d54ac079c88e4f8df0776caedf877, type: 3}
+  clip_Man:
+  - {fileID: 8300000, guid: 878602a49375ac54387fade5705ab816, type: 3}
+  - {fileID: 8300000, guid: 294b607ded68d87499475f1bc187edf1, type: 3}
+  - {fileID: 8300000, guid: a3370b6400f87c743ade971f650d3267, type: 3}
+  clip_Women:
+  - {fileID: 8300000, guid: aff3678a2ea2a164490a8bb6d62194c4, type: 3}
+  - {fileID: 8300000, guid: 46c8398e4c69ffa448646076ab6b0788, type: 3}
+  - {fileID: 8300000, guid: 6503b905c47ba584d8923c6851980ada, type: 3}
+  clip_Old:
+  - {fileID: 8300000, guid: 3f991ca2016d49a46bbb8ebf509733df, type: 3}
+  - {fileID: 8300000, guid: 6aed11a8e374ddd408f659970bbaf614, type: 3}
+  - {fileID: 8300000, guid: 2066fdba4a31d4e4d9d5d8d97d6b1c3a, type: 3}
 --- !u!4 &1121493035
 Transform:
   m_ObjectHideFlags: 0
@@ -2096,6 +2111,11 @@ PrefabInstance:
       propertyPath: clearManager
       value: 
       objectReference: {fileID: 687925408}
+    - target: {fileID: 2385614725779364611, guid: 64843e6c0ca43324b91fc99fc74d07e6,
+        type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1121493034}
     - target: {fileID: 2385614725779364670, guid: 64843e6c0ca43324b91fc99fc74d07e6,
         type: 3}
       propertyPath: m_Name

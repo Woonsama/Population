@@ -95,8 +95,29 @@ public class Player : ObjectBase, IMove, ICatch
                     target.transform.parent = transform;
                     target.GetComponent<BoxCollider2D>().enabled = false;
                     "시민을 잡았습니다".Log();
-                    target.GetComponent<Citizen>().citizenState.eState = CitizenState.EState.CATCHED;
-                    target.GetComponent<Citizen>().SetAnimation("badoongbadoong", true);
+
+                    Citizen targetCitizen = target.GetComponent<Citizen>();
+                    targetCitizen.citizenState.eState = CitizenState.EState.CATCHED;
+
+                    switch (targetCitizen.eCitizenType)
+                    {
+                        case Citizen.ECitizenType.Young:
+                            soundManager.PlayOnShot_Young(targetCitizen.audioSource);
+                            break;
+                        case Citizen.ECitizenType.Man:
+                            soundManager.PlayOnShot_Man(targetCitizen.audioSource);
+                            break;
+                        case Citizen.ECitizenType.Women:
+                            soundManager.PlayOnShot_Women(targetCitizen.audioSource);
+                            break;
+                        case Citizen.ECitizenType.Old:
+                            soundManager.PlayOnShot_Old(targetCitizen.audioSource);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    targetCitizen.SetAnimation("badoongbadoong", true);
                     target.transform.position = transform.GetChild(0).transform.position;
                     target.transform.eulerAngles = new Vector3(target.transform.eulerAngles.x, target.transform.eulerAngles.y, 90);
                     isCatch = true;
@@ -110,7 +131,7 @@ public class Player : ObjectBase, IMove, ICatch
                 truck.Lift();
                 if(truck.isNear)
                 {
-                    target.GetComponent<Citizen>().citizenState.eState = CitizenState.EState.DIE;
+                    target.GetComponent<Citizen>().citizenState.eState = CitizenState.EState.DIE;                  
                 }
                 else
                 {
