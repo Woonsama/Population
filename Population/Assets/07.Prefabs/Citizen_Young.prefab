@@ -97,6 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eCitizenType: 0
+  citizenState:
+    eState: 0
+    eMoveState: 4
+    moveSpeed: 3
+    isDie: 0
 --- !u!61 &2445240080506562835
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -110,7 +115,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015506327, y: -0.28221524}
+  m_Offset: {x: -0.015963137, y: -0.4054707}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -121,7 +126,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.62383974, y: 1.0429959}
+  m_Size: {x: 0.49796164, y: 0.796485}
   m_EdgeRadius: 0
 --- !u!50 &2652327296454514369
 Rigidbody2D:
