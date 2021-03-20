@@ -93,15 +93,6 @@ public class CitizenController : MonoBehaviour
 
         list_Citizen.Clear();
 
-        //최소 인원 수
-        gameData.minHumanCnt = (int)(gameData.currentHumanCnt * (citizenChangePercent.minPopulationPercent * 0.01));
-
-        //필요 포인트
-        gameData.needPoint = (int)(((gameData.citizenCnt.oldCnt * 1) +
-                             (gameData.citizenCnt.womenCnt * 3) +
-                             (gameData.citizenCnt.manCnt * 2) +
-                             (gameData.citizenCnt.youngCnt * 5)) * (citizenChangePercent.needPointPercent * 0.01));
-
         //이벤트 수치
         gameData.SetEventType();
 
@@ -112,11 +103,11 @@ public class CitizenController : MonoBehaviour
         {
             case EEventType.HyungZak:
                 "흉작 발생".Log();
-                gameData.needPoint += 5;
+                gameData.needPoint += 3;
                 break;
             case EEventType.PoongZak:
                 "풍작 발생".Log();
-                gameData.needPoint -= 5;
+                gameData.needPoint -= 3;
                 break;
             case EEventType.Festival:
                 "축제 발생".Log();
@@ -150,6 +141,14 @@ public class CitizenController : MonoBehaviour
         }
 
 
+        //최소 인원 수
+        gameData.minHumanCnt = (int)(gameData.currentHumanCnt * (citizenChangePercent.minPopulationPercent * 0.01));
+
+        //필요 포인트
+        gameData.needPoint = (int)(((gameData.citizenCnt.oldCnt * 1) +
+                             (gameData.citizenCnt.womenCnt * 3) +
+                             (gameData.citizenCnt.manCnt * 2) +
+                             (gameData.citizenCnt.youngCnt * 5)) * (citizenChangePercent.needPointPercent * 0.01));
         gameData.totalHumanCnt = gameData.citizenCnt.GetCurrentCount();
 
         //정리한 인원 생성

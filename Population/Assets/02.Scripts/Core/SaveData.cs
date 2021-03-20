@@ -125,5 +125,5 @@ public enum EEventType
     None = 6,
     
     Start = HyungZak,
-    End = HyungZak + 1,
+    End = Goryujang + 1,
 }
