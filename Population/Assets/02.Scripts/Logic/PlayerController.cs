@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
     public void HidePlayer()
     {
         cameraController.DetachTarget();
-        target.SetActive(false);
+
+        if(target != null)
+        {
+            target.SetActive(false);
+        }
     }
 }

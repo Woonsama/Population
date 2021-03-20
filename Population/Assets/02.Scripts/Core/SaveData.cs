@@ -51,20 +51,15 @@ public class WaveData
     }
 }
 
-public class PointData
+public class GameData
 {
     public int point { get; private set; }
     public int currentHumanCnt { get; private set; }
+    public CitizenCnt citizenCnt = new CitizenCnt();
 
-    public PointData()
+    public GameData()
     {
         point = 0;
-    }
-
-
-    public void SetPoint()
-    {
-
     }
 
     public void Do_LoadData()
@@ -74,6 +69,26 @@ public class PointData
 
     public void Do_SaveData()
     {
-        
+
+    }
+}
+
+[System.Serializable]
+
+public class CitizenCnt
+{
+    public int youngCnt;
+    public int manCnt;
+    public int womenCnt;
+    public int oldCnt;
+
+    public CitizenCnt()
+    {
+        Reset();
+    }
+
+    public void Reset()
+    {
+        youngCnt = manCnt = womenCnt = oldCnt = 0;
     }
 }

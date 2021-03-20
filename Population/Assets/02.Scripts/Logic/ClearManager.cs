@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ClearManager : MonoBehaviour
 {
-    public bool isClear { get; private set; }
+    public bool isWaveClear { get; set; }
 
-    private void Awake()
+    private void Update()
     {
-        
-    }
+        if(!isWaveClear)
+        {
 
-    public void CheckIsWaveCleared()
-    {
-
+        }
     }
 }

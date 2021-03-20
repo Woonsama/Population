@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class Const
 {
+    public const int c_MaxWaveCnt = 6;
+
     public const int c_Initial_Young_Cnt = 5;
     public const int c_Initial_Man_Cnt = 5;
     public const int c_Initial_WomenCnt = 5;

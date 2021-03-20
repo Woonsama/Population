@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Wave
 {
-    const int c_Max_Wave = 6;
-
     [Header("현재 웨이브")]
     public int curWave = 1;
 
@@ -14,11 +12,11 @@ public class Wave
 
     public void WaveClear()
     {
-        if(curWave < c_Max_Wave)
+        if(curWave < Const.c_MaxWaveCnt)
         {
             curWave++;
         }
-        else if(curWave == c_Max_Wave)
+        else if(curWave == Const.c_MaxWaveCnt)
         {
             isWaveAllClear = true;
         }

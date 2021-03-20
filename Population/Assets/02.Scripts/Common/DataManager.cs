@@ -5,7 +5,7 @@ using UnityEngine;
 public class DataManager
 {
     public WaveData waveData = new WaveData();
-    public PointData scoreData = new PointData();
+    public GameData gameData = new GameData();
 
     public DataManager()
     {
@@ -15,32 +15,12 @@ public class DataManager
     public void LoadData()
     {
         waveData.Do_LoadData();
-        scoreData.Do_LoadData();
+        gameData.Do_LoadData();
     }
 
     public void SaveData()
     {
         waveData.Do_SaveData();
-        scoreData.Do_SaveData();
-    }
-}
-
-public class CitizenData
-{
-    public CitizenCountData citizenCountData = new CitizenCountData();
-}
-
-[System.Serializable]
-
-public class CitizenCountData
-{
-    public int youngCnt;
-    public int manCnt;
-    public int womenCnt;
-    public int oldCnt;
-
-    public int GetTotalCitizenCount()
-    {
-        return youngCnt + manCnt + womenCnt + oldCnt;
+        gameData.Do_SaveData();
     }
 }
