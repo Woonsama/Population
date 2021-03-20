@@ -11,9 +11,13 @@ public class Result : MonoBehaviour
     private int count;
     private string[] scripts;
 
+    private bool doing = false;
+    public Image fadeImg;
+
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine("fadeIn");
         // 엔딩에 따라 scrips에 저장되는 내용에 달라짐
         roundClear();
         //badeEnding();
@@ -26,12 +30,47 @@ public class Result : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!doing && Input.GetKeyDown(KeyCode.Space))
         {
             if (count >= scripts.Length)
+            {
+                StartCoroutine("fadeOut");
                 return;
+            }
             contents.text = scripts[count++];
         }
+    }
+
+    IEnumerator fadeIn()
+    {
+        doing = true;
+        Color fadeColor = fadeImg.color;
+
+        while (fadeColor.a > 0f)
+        {
+            fadeColor.a -= 0.01f;
+            fadeImg.color = fadeColor;
+            yield return null;
+        }
+
+        fadeColor.a = 0f;
+        doing = false;
+    }
+
+    IEnumerator fadeOut()
+    {
+        doing = true;
+        Color fadeColor = fadeImg.color;
+
+        while (fadeColor.a <= 1f)
+        {
+            fadeColor.a += 0.01f;
+            fadeImg.color = fadeColor;
+            yield return null;
+        }
+
+        fadeColor.a = 1f;
+        doing = false;
     }
 
     public void roundClear()
