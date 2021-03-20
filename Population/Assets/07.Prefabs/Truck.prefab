@@ -101,6 +101,11 @@ MonoBehaviour:
   currentDistance: 0
   isNear: 0
   isCitizen: 0
+  dataManager: {fileID: 0}
+  youngCnt: 0
+  manCnt: 0
+  womenCnt: 0
+  oldCnt: 0
 --- !u!111 &471651316115998550
 Animation:
   m_ObjectHideFlags: 0
@@ -110,8 +115,9 @@ Animation:
   m_GameObject: {fileID: 2385614725779364670}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
+  m_Animation: {fileID: 7400000, guid: 1607fe464cb449042bc061a123a98c94, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1607fe464cb449042bc061a123a98c94, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
