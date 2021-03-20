@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7044291402118163337}
   - component: {fileID: 4733405130875743729}
   - component: {fileID: 128713948256483232}
+  - component: {fileID: -6424991463647882332}
   m_Layer: 0
   m_Name: Woman
   m_TagString: Citizen
@@ -163,3 +164,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.212206, y: 2.110015}
   m_EdgeRadius: 0
+--- !u!50 &-6424991463647882332
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3291066638881741767}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
