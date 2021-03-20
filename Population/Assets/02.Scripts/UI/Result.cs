@@ -25,7 +25,7 @@ public class Result : MonoBehaviour
     {
         //StartCoroutine("fadeIn");
         // 엔딩에 따라 scrips에 저장되는 내용에 달라짐
-        roundClear();
+        //roundClear();
         //badeEnding();
         //ending();
 

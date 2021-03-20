@@ -61,7 +61,7 @@ public class InfoPopup : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             yield return null;
         }
 
-        popupRect.x = 700f;
+        popupRect.x = 650f;
         popupRect.y = 100f;
         color.a = 1f;
         popupImage.sizeDelta = popupRect;

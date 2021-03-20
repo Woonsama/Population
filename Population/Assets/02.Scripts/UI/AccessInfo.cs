@@ -42,14 +42,14 @@ public class AccessInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         doing = true;
         Vector3 infoPos = infomation.localPosition;
 
-        while (infoPos.x > -140f)
+        while (infoPos.x > -180f)
         {
             infoPos.x -= 8f;
             infomation.localPosition = infoPos;
             yield return null;
         }
 
-        infoPos.x = -140f;
+        infoPos.x = -180f;
         infomation.localPosition = infoPos;
         doing = false;
     }
@@ -59,14 +59,14 @@ public class AccessInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         doing = true;
         Vector3 infoPos = infomation.localPosition;
 
-        while (infoPos.x < -80f)
+        while (infoPos.x < -140f)
         {
             infoPos.x += 8f;
             infomation.localPosition = infoPos;
             yield return null;
         }
 
-        infoPos.x = -80f;
+        infoPos.x = -140f;
         infomation.localPosition = infoPos;
         doing = false;
     }
