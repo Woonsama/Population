@@ -53,15 +53,15 @@ public class InfoPopup : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         while (popupRect.y < 100f && color.a <= 1f)
         {
-            popupRect.x += 10f;
+            popupRect.x += 20f;
             popupRect.y += 15f;
-            color.a += 0.1f;
+            color.a += 0.08f;
             popupImage.sizeDelta = popupRect;
             tInfo.color = color;
             yield return null;
         }
 
-        popupRect.x = 600f;
+        popupRect.x = 700f;
         popupRect.y = 100f;
         color.a = 1f;
         popupImage.sizeDelta = popupRect;
@@ -77,9 +77,9 @@ public class InfoPopup : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         while (popupRect.y > 0f && color.a > 0f)
         {
-            popupRect.x -= 10f;
+            popupRect.x -= 20f;
             popupRect.y -= 15f;
-            color.a -= 0.1f;
+            color.a -= 0.08f;
             popupImage.sizeDelta = popupRect;
             tInfo.color = color;
             yield return null;
