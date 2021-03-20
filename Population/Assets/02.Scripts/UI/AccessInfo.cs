@@ -8,8 +8,6 @@ public class AccessInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public RectTransform infomation;
 
     private bool doing = false;
-    
-    public float posX;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +33,7 @@ public class AccessInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         //if (doing)
         //    return;
-        //StopCoroutine("popupOpen");
+        StopCoroutine("popupOpen");
         StartCoroutine("hideInfo");
     }
 
@@ -44,16 +42,15 @@ public class AccessInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         doing = true;
         Vector3 infoPos = infomation.localPosition;
 
-        while (infoPos.x > posX)
+        while (infoPos.x > -140f)
         {
-            Debug.Log(infoPos);
-            infoPos.x -= 4f;
+            infoPos.x -= 8f;
             infomation.localPosition = infoPos;
             yield return null;
         }
 
-        infoPos.x = posX;
-        infomation.sizeDelta = infoPos;
+        infoPos.x = -140f;
+        infomation.localPosition = infoPos;
         doing = false;
     }
 
@@ -62,15 +59,15 @@ public class AccessInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         doing = true;
         Vector3 infoPos = infomation.localPosition;
 
-        while (infoPos.x < 0f)
+        while (infoPos.x < -80f)
         {
-            infoPos.x += 4f;
+            infoPos.x += 8f;
             infomation.localPosition = infoPos;
             yield return null;
         }
 
-        infoPos.x = 0f;
-        infomation.sizeDelta = infoPos;
+        infoPos.x = -80f;
+        infomation.localPosition = infoPos;
         doing = false;
     }
 }
