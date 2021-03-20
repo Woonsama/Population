@@ -51,18 +51,20 @@ public class WaveData
     }
 }
 
-public class ScoreData
+public class PointData
 {
-    public int score { get; private set; }
+    public int point { get; private set; }
+    public int currentHumanCnt { get; private set; }
 
-    public ScoreData()
+    public PointData()
     {
-        score = 0;
+        point = 0;
     }
 
-    public void AddScore(int score)
+
+    public void SetPoint()
     {
-        this.score += score;
+
     }
 
     public void Do_LoadData()
@@ -72,6 +74,6 @@ public class ScoreData
 
     public void Do_SaveData()
     {
-
+        
     }
 }

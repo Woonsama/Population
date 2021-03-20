@@ -5,7 +5,7 @@ using UnityEngine;
 public class DataManager
 {
     public WaveData waveData = new WaveData();
-    public ScoreData scoreData = new ScoreData();
+    public PointData scoreData = new PointData();
 
     public DataManager()
     {

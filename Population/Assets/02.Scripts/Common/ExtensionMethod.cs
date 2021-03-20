@@ -7,7 +7,7 @@ public static class ExtensionMethod
 {
     public static void Log(this object value)
     {
-#if Unity_Editor
+#if UNITY_EDITOR
         Debug.Log(value);
 #endif
     }

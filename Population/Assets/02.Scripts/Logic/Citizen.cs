@@ -23,7 +23,7 @@ public class Citizen : ObjectBase, IMove
 
     protected override IEnumerator OnAwakeCoroutine()
     {
-        Behaviour_Coroutine();
+        StartCoroutine(Behaviour_Coroutine());
         return base.OnAwakeCoroutine();
     }
 
