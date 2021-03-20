@@ -18,18 +18,7 @@ public class Citizen : ObjectBase
 
     protected override IEnumerator OnAwakeCoroutine()
     {
-        Init();
         return base.OnAwakeCoroutine();
-    }
-
-    private void Init()
-    {
-        SetCitizenType();
-    }
-
-    private void SetCitizenType()
-    {
-        eCitizenType = (ECitizenType)Random.Range(0, (int)ECitizenType.Count);
     }
 
 }

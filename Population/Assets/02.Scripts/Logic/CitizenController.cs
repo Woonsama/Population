@@ -50,9 +50,29 @@ public class CitizenController : MonoBehaviour
         }
     }
 
-    private void CreateCitizen(GameObject citizen, string name)
+    private void CreateCitizen(GameObject citizenObj, string name)
     {
-        var obj = Instantiate(citizen, parent);
+        var obj = Instantiate(citizenObj, parent);
+        var citizen = obj.GetComponent<Citizen>();
+
+        switch (name)
+        {
+            case "Young":
+                citizen.eCitizenType = Citizen.ECitizenType.Young;
+                break;
+            case "Man":
+                citizen.eCitizenType = Citizen.ECitizenType.Man;
+                break;
+            case "Women":
+                citizen.eCitizenType = Citizen.ECitizenType.Women;
+                break;
+            case "Old":
+                citizen.eCitizenType = Citizen.ECitizenType.Old;
+                break;
+            default:
+                break;
+        }
+
         SetCitizenPosition(obj);
         obj.name = name;
         list_Citizen.Add(obj);

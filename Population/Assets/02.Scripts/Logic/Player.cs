@@ -7,8 +7,14 @@ public class Player : ObjectBase, IMove, ICatch
     [Header("스테이터스")]
     public PlayerState state;
 
-    private bool isCatch = false;
-    private bool isNear = true;
+    [Header("확인용 - 지금 시민을 잡고 있는지")]
+    [SerializeField] private bool isCatch = false;
+
+    [Header("확인용 - 적과 가까이 있는지")]
+    [SerializeField] private bool isNear = false;
+
+    private GameObject target;
+    private Vector2 targetInitialPos;
 
     protected override IEnumerator OnAwakeCoroutine()
     {
@@ -37,35 +43,46 @@ public class Player : ObjectBase, IMove, ICatch
 
     public void Catch()
     {
-        //가까이에 있으면서 시민을 안 잡고 있는 경우
-        if(isNear && !isCatch)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            isCatch = true;
-        }
-        //가까이에 있으면서 시민을 이미 잡은 경우
-        else if(isNear && isCatch)
-        {
-            isCatch = false;
-        }
-        //가까이에 없으면서 시민을 안 잡고 있는 경우
-        else if(!isNear && !isCatch)
-        {
+            if (isNear && !isCatch)
+            {
+                target.transform.parent = transform;
+                target.GetComponent<BoxCollider2D>().enabled = false;
+                "시민을 잡았습니다".Log();
+                isCatch = true;
+            }
+            else if (isNear && isCatch || !isNear && isCatch)
+            {
+                target.GetComponent<BoxCollider2D>().enabled = true;
+                transform.DetachChildren();
+                "시민을 놓아주었습니다".Log();
+                target = null;
+                isCatch = false;
+            }
+            else if(!isNear && !isCatch)
+            {
 
-        }
-        //가까이에 없으면서 시민을 잡고 있는 경우
-        else if (!isNear && isCatch)
-        {
-            isCatch = false;
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Citizen" && !isCatch)
+        if(collision.collider.tag == "Citizen")
         {
+            if(!isCatch)
+            {
+                target = collision.collider.gameObject;
+                targetInitialPos = target.transform.position;
+            }
             isNear = true;
         }
-        else
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Citizen")
         {
             isNear = false;
         }

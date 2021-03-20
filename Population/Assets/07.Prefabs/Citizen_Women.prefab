@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1633154361955144224}
   m_Layer: 0
   m_Name: Citizen_Women
-  m_TagString: Untagged
+  m_TagString: Citizen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
