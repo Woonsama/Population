@@ -24,12 +24,22 @@ public class UIManager : MonoBehaviour
 
     public GameObject optionPopup = null;
 
+    private DataManager dataManager = new DataManager();
 
-    //// Start is called before the first frame update
-    //void Start()
-    //{
 
-    //}
+    // Start is called before the first frame update
+    void Start()
+    {
+        // seting
+        setCount(Kind.CHILD, dataManager.gameData.citizenCnt.youngCnt);
+        setCount(Kind.MAN, dataManager.gameData.citizenCnt.manCnt);
+        setCount(Kind.WOMAN, dataManager.gameData.citizenCnt.womenCnt);
+        setCount(Kind.OLD, dataManager.gameData.citizenCnt.oldCnt);
+
+        setPoint(dataManager.gameData.point);
+
+        setPopulation(dataManager.gameData.currentHumanCnt, 0);
+    }
 
     // Update is called once per frame
     void Update()
