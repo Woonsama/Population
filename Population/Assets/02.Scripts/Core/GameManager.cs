@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     [Header("데이터매니저")]
     public DataManager dataManager;
 
+    [Header("결과팝업창")]
+    public GameObject resultPopup;
+
     private void Awake()
     {
         StartCoroutine(Game_Coroutine());
@@ -64,6 +67,8 @@ public class GameManager : MonoBehaviour
             if(dataManager.gameData.currentHumanCnt < dataManager.gameData.minHumanCnt)
             {
                 //게임 패배
+                resultPopup.SetActive(true);
+                resultPopup.GetComponent<Result>().badeEnding();
             }
             yield return null;
         }
@@ -77,12 +82,15 @@ public class GameManager : MonoBehaviour
         if (dataManager.waveData.GetIsWaveAllClear())
         {
             //게임 최종 클리어
+            resultPopup.SetActive(true);
+            resultPopup.GetComponent<Result>().ending();
 
         }
         else
         {
             //각 스테이지 클리어
-
+            resultPopup.SetActive(true);
+            resultPopup.GetComponent<Result>().roundClear();
 
             citizenController.SetNextYear(dataManager.gameData);
         }

@@ -34,6 +34,8 @@ public class Result : MonoBehaviour
         {
             if (count >= scripts.Length)
             {
+                Time.timeScale = 1f;
+                this.gameObject.SetActive(false);
                 //StartCoroutine("fadeOut");
                 return;
             }
@@ -77,6 +79,9 @@ public class Result : MonoBehaviour
 
     public void roundClear()
     {
+        Time.timeScale = 0f;
+        count = 0;
+
         title.text = "N 년차 완료";
 
         scripts = new string[3];
@@ -106,6 +111,9 @@ public class Result : MonoBehaviour
 
     public void badeEnding()
     {
+        Time.timeScale = 0f;
+        count = 0;
+
         title.text = "주민이 모두 떠났습니다";
 
         scripts = new string[4];
@@ -132,6 +140,9 @@ public class Result : MonoBehaviour
 
     public void ending()
     {
+        Time.timeScale = 0f;
+        count = 0;
+
         title.text = "당신은 마을을 지켰습니다";
 
         scripts = new string[1];
