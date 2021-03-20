@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
         setCount(Kind.WOMAN, dataManager.gameData.citizenCnt.womenCnt);
         setCount(Kind.OLD, dataManager.gameData.citizenCnt.oldCnt);
 
-        setPoint(dataManager.gameData.point);
+        setPoint(dataManager.gameData.needPoint);
 
         setPopulation(dataManager.gameData.currentHumanCnt, 0);
     }

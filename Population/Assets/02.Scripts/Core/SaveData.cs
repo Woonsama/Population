@@ -53,14 +53,18 @@ public class WaveData
 
 public class GameData
 {
-    public int point { get; private set; }
-    public int currentHumanCnt { get; private set; }
-    public int minHumanCnt { get; private set;  }
+    //필요 포인트
+    public int needPoint { get; set; } = 0;
+    //현재 포인트
+    public int currentHumanCnt { get; set; } = 0;
+    //최소 포인트
+    public int minHumanCnt { get; set; } = 0;
+    //인원 정보
     public CitizenCnt citizenCnt = new CitizenCnt();
 
     public GameData()
     {
-        point = 0;
+        
     }
 
     public void Do_LoadData()
@@ -91,5 +95,10 @@ public class CitizenCnt
     public void Reset()
     {
         youngCnt = manCnt = womenCnt = oldCnt = 0;
+    }
+
+    public int GetTotalCount()
+    {
+        return youngCnt + manCnt + womenCnt + oldCnt;
     }
 }

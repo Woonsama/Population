@@ -38,15 +38,6 @@ public class GameManager : MonoBehaviour
         yield break;
     }
 
-    private void WaveClear()
-    {
-        "플레이어 삭제 - Clear".Log();
-        playerController.HidePlayer();
-
-        "시민 삭제 - Clear".Log();
-        citizenController.ClearCitizen(dataManager.gameData);
-    }
-
     private IEnumerator WaveStart()
     {
         "플레이어 생성 - Init".Log();
@@ -55,7 +46,7 @@ public class GameManager : MonoBehaviour
         "시민 생성 - Init".Log();
         if(dataManager.waveData.wave.curWave == 1)
         {
-            citizenController.Init();
+            citizenController.Init(dataManager.gameData);
         }
         else
         {
@@ -79,7 +70,12 @@ public class GameManager : MonoBehaviour
         else
         {
             //웨이브 클리어 처리
-            WaveClear();
+
+            "플레이어 삭제 - Clear".Log();
+            playerController.HidePlayer();
+
+            "시민 삭제 - Clear".Log();
+            citizenController.ClearCitizen(dataManager.gameData);
         }
     }
 }
