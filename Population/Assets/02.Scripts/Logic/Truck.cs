@@ -28,6 +28,13 @@ public class Truck : ObjectBase
         if (playerObj != null)
         {
             currentDistance = Vector2.Distance(playerObj.transform.position, transform.position);
+        }
+    }
+
+    public void Lift()
+    {
+        if(playerObj != null)
+        {
             if (currentDistance < distance)
             {
                 isNear = true;
@@ -36,14 +43,8 @@ public class Truck : ObjectBase
             {
                 isNear = false;
             }
-        }
-    }
 
-    public void Lift()
-    {
-        if(playerObj != null)
-        {
-            if (playerObj.transform.GetChild(2).gameObject != null)
+            if (playerObj.transform.GetChild(2).gameObject != null && isNear)
             {
                 GameObject citizenObj = playerObj.transform.GetChild(2).gameObject;
                 Citizen citizen = citizenObj.GetComponent<Citizen>();
@@ -52,11 +53,6 @@ public class Truck : ObjectBase
 
                 GameObject.Destroy(citizenObj);
             }
-            "Test".Log();
-        }
-        else
-        {
-            isNear = false;
         }
     }
 }
