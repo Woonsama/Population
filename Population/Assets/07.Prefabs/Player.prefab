@@ -101,7 +101,7 @@ MonoBehaviour:
   state:
     moveSpeed: 0.5
   isCatch: 0
-  isNear: 1
+  isNear: 0
 --- !u!61 &3192501064948383307
 BoxCollider2D:
   m_ObjectHideFlags: 0
