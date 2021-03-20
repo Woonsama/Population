@@ -36,8 +36,6 @@ public class Player : ObjectBase, IMove, ICatch
         if (x > 0) transform.localScale = new Vector2(-1, 1);
         else if (x < 0) transform.localScale = new Vector2(1, 1);
 
-        x.Log();
-
         transform.Translate(new Vector2(x, y));
     }
 

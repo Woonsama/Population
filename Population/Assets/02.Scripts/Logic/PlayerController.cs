@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("카메라 컨트롤러")]
+    public CameraController cameraController;
+
     [Header("플레이어")]
     public GameObject player;
 
@@ -24,10 +27,12 @@ public class PlayerController : MonoBehaviour
         }
 
         target.transform.position = playerCreatePos;
+        cameraController.SetTarget(target);
     }
 
     public void HidePlayer()
     {
+        cameraController.DetachTarget();
         target.SetActive(false);
     }
 }
