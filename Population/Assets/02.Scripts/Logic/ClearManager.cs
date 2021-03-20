@@ -8,6 +8,9 @@ public class ClearManager : MonoBehaviour
 
     private void Update()
     {
+        //TEST
+        if (Input.GetKeyDown(KeyCode.F1)) isWaveClear = true;
+
         if(!isWaveClear)
         {
 

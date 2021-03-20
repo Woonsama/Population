@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1652903814}
-  player: {fileID: 3192501064948383351, guid: 86e0ed2920812084d8761fd60320ff54, type: 3}
+  player: {fileID: 6367115934579843102, guid: 9e3a2016e0782ea42bd09454335ac95e, type: 3}
   playerCreatePos: {x: -3, y: 0}
 --- !u!4 &170826786
 Transform:
@@ -545,10 +545,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2d8001a77387243ae3b9ec6a25cb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  young: {fileID: 2445240080506562839, guid: 4f689bb2bc0aaef4ea8a72c6ea099ea5, type: 3}
-  man: {fileID: 693808146528560583, guid: e3f7041aa1f657c4a918aea5ce800101, type: 3}
-  women: {fileID: 9158138627654558418, guid: 846cf9ddb162f7a469e212b5f2c44f88, type: 3}
-  old: {fileID: 8196885876725597262, guid: 7ab64d8e44801d546a652277fa5043cc, type: 3}
+  young: {fileID: 3117928892025716321, guid: 8b570df2a14c8d142969038312b1cc47, type: 3}
+  man: {fileID: 797109415707856347, guid: 2b5fbc6e0a33965438b2919b0de5be58, type: 3}
+  women: {fileID: 3291066638881741767, guid: 3d8852c7111eaf54397435b52caa1092, type: 3}
+  old: {fileID: 6308117257707714123, guid: 4207898fa13a630478627867da809d4d, type: 3}
+  citizenChangePercent:
+    youngToAdult: 0
+    young_man: 0
+    man_take: 0
+    manToOld: 0
+    womenGenerate: 0
+    womenToOld: 0
+    oldToDie: 0
   parent: {fileID: 80071221}
   citizenCreatePos:
   - {x: -2, y: 2}
@@ -977,10 +985,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2385614725779364611, guid: 64843e6c0ca43324b91fc99fc74d07e6,
+        type: 3}
+      propertyPath: distance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2385614725779364670, guid: 64843e6c0ca43324b91fc99fc74d07e6,
         type: 3}
       propertyPath: m_Name
       value: Truck
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385614725779364670, guid: 64843e6c0ca43324b91fc99fc74d07e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64843e6c0ca43324b91fc99fc74d07e6, type: 3}

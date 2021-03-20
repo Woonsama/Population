@@ -43,7 +43,10 @@ public class Citizen : ObjectBase, IMove
             }
             else
             {
-                Move();
+                if(citizenState.eState == CitizenState.EState.ALIVE)
+                {
+                    Move();
+                }
                 time += Time.deltaTime;
             }
 
@@ -57,9 +60,11 @@ public class Citizen : ObjectBase, IMove
         {
             case CitizenState.EMoveState.LEFT:
                 transform.position += (Vector3)(Vector2.left * citizenState.moveSpeed * Time.deltaTime);
+                transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
                 break;
             case CitizenState.EMoveState.RIGHT:
                 transform.position += (Vector3)(Vector2.right * citizenState.moveSpeed * Time.deltaTime);
+                transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
                 break;
             case CitizenState.EMoveState.UP:
                 transform.position += (Vector3)(Vector2.up * citizenState.moveSpeed * Time.deltaTime);

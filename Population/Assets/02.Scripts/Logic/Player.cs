@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 public class Player : ObjectBase, IMove, ICatch
 {
@@ -13,12 +14,19 @@ public class Player : ObjectBase, IMove, ICatch
     [Header("확인용 - 적과 가까이 있는지")]
     [SerializeField] private bool isNear = false;
 
+    private Truck truck;
+
     private GameObject target;
     private Vector2 targetInitialPos;
 
+    private SkeletonAnimation skeletonAnimation;
+
     protected override IEnumerator OnAwakeCoroutine()
     {
+        skeletonAnimation = GetComponent<SkeletonAnimation>();
 
+        truck = GameObject.Find("Truck").GetComponent<Truck>();
+        truck.SetPlayer(this);
         return base.OnAwakeCoroutine();
     }
 
@@ -33,10 +41,24 @@ public class Player : ObjectBase, IMove, ICatch
         float x = Input.GetAxisRaw("Horizontal") * 0.1f * state.moveSpeed;
         float y = Input.GetAxisRaw("Vertical") * 0.1f * state.moveSpeed;
 
-        if (x > 0) transform.localScale = new Vector2(-1, 1);
-        else if (x < 0) transform.localScale = new Vector2(1, 1);
+        if (x > 0) transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+        else if (x < 0) transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
 
-        transform.Translate(new Vector2(x, y));
+        //transform.Translate(new Vector2(x, y));
+        transform.position += (Vector3)(new Vector2(x, y));
+
+        if(x != 0 || y != 0)
+        {
+            "Test".Log();
+            //skeletonAnimation.name = "walk";
+            skeletonAnimation.state.SetAnimation(0, "walk", true);
+        }
+        else if(x == 0 && y == 0)
+        {
+            //skeletonAnimation.name = "idle";
+            skeletonAnimation.state.SetAnimation(0, "idle", true);
+        }
+
     }
 
     public void Catch()
@@ -48,15 +70,25 @@ public class Player : ObjectBase, IMove, ICatch
                 target.transform.parent = transform;
                 target.GetComponent<BoxCollider2D>().enabled = false;
                 "시민을 잡았습니다".Log();
+                target.GetComponent<Citizen>().citizenState.eState = CitizenState.EState.CATCHED;
                 isCatch = true;
             }
             else if (isNear && isCatch || !isNear && isCatch)
             {
                 target.GetComponent<BoxCollider2D>().enabled = true;
-                transform.DetachChildren();
                 "시민을 놓아주었습니다".Log();
+                if(truck.isNear)
+                {
+                    truck.Lift();
+                    target.GetComponent<Citizen>().citizenState.eState = CitizenState.EState.DIE;
+                }
+                else
+                {
+                    target.GetComponent<Citizen>().citizenState.eState = CitizenState.EState.ALIVE;
+                }
                 target = null;
                 isCatch = false;
+
             }
             else if(!isNear && !isCatch)
             {
@@ -74,6 +106,7 @@ public class Player : ObjectBase, IMove, ICatch
                 target = collision.collider.gameObject;
                 targetInitialPos = target.transform.position;
             }
+
             isNear = true;
         }
     }
