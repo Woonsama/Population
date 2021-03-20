@@ -36,55 +36,15 @@ public class Result : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            roundClear();
-        }
         if (!doing && Input.GetKeyDown(KeyCode.Space))
         {
             if (count >= scripts.Length)
             {
-                Time.timeScale = 1f;
-                this.gameObject.SetActive(false);
-                //StartCoroutine("fadeOut");
+                StartCoroutine("fadeOutIn");
                 return;
             }
             contents.text = scripts[count++];
         }
-    }
-
-    IEnumerator fadeIn()
-    {
-        doing = true;
-        Color fadeColor = fadeImg.color;
-
-        while (fadeColor.a > 0f)
-        {
-            fadeColor.a -= 0.01f;
-            fadeImg.color = fadeColor;
-            yield return null;
-        }
-
-        fadeColor.a = 0f;
-        fadeImg.color = fadeColor;
-        doing = false;
-    }
-
-    IEnumerator fadeOut()
-    {
-        doing = true;
-        Color fadeColor = fadeImg.color;
-
-        while (fadeColor.a <= 1f)
-        {
-            fadeColor.a += 0.01f;
-            fadeImg.color = fadeColor;
-            yield return null;
-        }
-
-        fadeColor.a = 1f;
-        fadeImg.color = fadeColor;
-        doing = false;
     }
 
     IEnumerator fadeOutIn()
@@ -94,7 +54,7 @@ public class Result : MonoBehaviour
 
         while (fadeColor.a <= 1f)
         {
-            fadeColor.a += 0.01f;
+            fadeColor.a += 0.08f;
             fadeImg.color = fadeColor;
             yield return null;
         }
@@ -102,11 +62,14 @@ public class Result : MonoBehaviour
         fadeColor.a = 1f;
         fadeImg.color = fadeColor;
 
-        resultObj.SetActive(true);
+        if (count >= scripts.Length)
+            resultObj.SetActive(false);
+        else
+            resultObj.SetActive(true);
 
         while (fadeColor.a > 0f)
         {
-            fadeColor.a -= 0.01f;
+            fadeColor.a -= 0.08f;
             fadeImg.color = fadeColor;
             yield return null;
         }
@@ -114,8 +77,14 @@ public class Result : MonoBehaviour
         fadeColor.a = 0f;
         fadeImg.color = fadeColor;
         doing = false;
-    }
 
+        if (count >= scripts.Length)
+        {
+            Time.timeScale = 1f;
+            this.gameObject.SetActive(false);
+        }
+    }
+    
     public void roundClear()
     {
         Time.timeScale = 0f;
@@ -155,6 +124,7 @@ public class Result : MonoBehaviour
     {
         Time.timeScale = 0f;
         count = 0;
+        StartCoroutine("fadeOutIn");
 
         title.text = "주민이 모두 떠났습니다";
 
@@ -184,6 +154,7 @@ public class Result : MonoBehaviour
     {
         Time.timeScale = 0f;
         count = 0;
+        StartCoroutine("fadeOutIn");
 
         title.text = "당신은 마을을 지켰습니다";
 
