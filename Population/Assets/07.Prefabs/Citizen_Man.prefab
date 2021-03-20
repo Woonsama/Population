@@ -100,7 +100,7 @@ MonoBehaviour:
   citizenState:
     eState: 0
     eMoveState: 4
-    moveSpeed: 3
+    moveSpeed: 0.3
     isDie: 0
 --- !u!61 &693808146528560582
 BoxCollider2D:
