@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "YyWyZFl3rmM5bJD9bNmPHNBhBmQ",
+	"hash": "NHhtPESxrUHgA0E+vNB/Qek3/GU",
 	"spine": "3.8.99",
 	"x": -74.61,
 	"y": -1.75,
@@ -182,7 +182,7 @@
 				],
 				"translate": [
 					{},
-					{ "time": 0.0667, "y": 23.85 },
+					{ "time": 0.0667, "y": 31.05 },
 					{ "time": 0.3333 }
 				],
 				"scale": [
