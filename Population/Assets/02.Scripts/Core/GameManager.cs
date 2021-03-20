@@ -77,9 +77,13 @@ public class GameManager : MonoBehaviour
         if (dataManager.waveData.GetIsWaveAllClear())
         {
             //게임 최종 클리어
+
         }
         else
         {
+            //각 스테이지 클리어
+
+
             citizenController.SetNextYear(dataManager.gameData);
         }
     }

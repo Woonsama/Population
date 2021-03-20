@@ -557,10 +557,11 @@ MonoBehaviour:
     womenGenerate: 25
     womenToOld: 50
     oldToDie: 75
-    minPopulationPercent: 17
+    minPopulationPercent: 83
     youngDie: 25
     manDie: 25
     womenDie: 25
+    needPointPercent: 19
   parent: {fileID: 80071221}
   citizenCreatePos:
   - {x: -2, y: 2}
@@ -1498,6 +1499,11 @@ PrefabInstance:
       propertyPath: oldCnt
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2385614725779364611, guid: 64843e6c0ca43324b91fc99fc74d07e6,
+        type: 3}
+      propertyPath: clearManager
+      value: 
+      objectReference: {fileID: 687925408}
     - target: {fileID: 2385614725779364670, guid: 64843e6c0ca43324b91fc99fc74d07e6,
         type: 3}
       propertyPath: m_Name

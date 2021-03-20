@@ -23,6 +23,9 @@ public class Truck : ObjectBase
     [Header("데이터매니저")]
     public DataManager dataManager;
 
+    [Header("클리어매니저")]
+    public ClearManager clearManager;
+
     [Header("차감 될 데이터 [포인트]")]
     public int youngCnt;
     public int manCnt;
@@ -103,10 +106,14 @@ public class Truck : ObjectBase
                 isNear = false;
             }
         }
+        PointCheck();
     }
 
-    private void SetPoint()
+    private void PointCheck()
     {
-
+        if(dataManager.gameData.needPoint <= 0)
+        {
+            clearManager.isWaveClear = true;
+        }
     }
 }
