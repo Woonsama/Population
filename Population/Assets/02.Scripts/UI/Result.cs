@@ -54,6 +54,7 @@ public class Result : MonoBehaviour
         }
 
         fadeColor.a = 0f;
+        fadeImg.color = fadeColor;
         doing = false;
     }
 
@@ -70,6 +71,7 @@ public class Result : MonoBehaviour
         }
 
         fadeColor.a = 1f;
+        fadeImg.color = fadeColor;
         doing = false;
     }
 
@@ -89,10 +91,12 @@ public class Result : MonoBehaviour
         scripts[1] = "(이벤트 이름)\n"
                         + "이벤트 설명\n\n"
                         + "N 명의 어린아이가 출생했습니다.\n"
-                        + "N 명의 아이가 성인이 되었습니다\n"
-                        + "N 명의 성인이 마을에 찾아왔습니다\n"
-                        + "N 명의 성인이 노인이 되었습니다\n"
-                        + "N 명의 노인이 노화로 인해 자연사하였습니다\n";
+                        + "N 명의 어린아이가 자연사하였습니다.\n"
+                        + "N 명의 아이가 성인이 되었습니다.\n"
+                        + "N 명의 성인이 마을에 찾아왔습니다.\n"
+                        + "N 명의 성인이 노인이 되었습니다.\n"
+                        + "N 명의 성인이 자연사하였습니다.\n"
+                        + "N 명의 노인이 노화로 인해 자연사하였습니다.\n";
         scripts[2] = "현재 주민 수\n\n"
                         + "아이 : N\n\n"
                         + "남성 : N\n\n"
