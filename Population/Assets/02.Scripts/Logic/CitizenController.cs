@@ -141,6 +141,8 @@ public class CitizenController : MonoBehaviour
         }
 
 
+        gameData.currentHumanCnt = gameData.citizenCnt.GetCurrentCount();
+
         //최소 인원 수
         gameData.minHumanCnt = (int)(gameData.currentHumanCnt * (citizenChangePercent.minPopulationPercent * 0.01));
 
