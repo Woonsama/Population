@@ -7,6 +7,10 @@ public class Result : MonoBehaviour
 {
     public Text title;
     public Text contents;
+    
+    public Image fadeImg;
+
+    public GameObject resultObj;
 
     private int count;
     private string[] scripts;
@@ -15,7 +19,6 @@ public class Result : MonoBehaviour
 
     [Header("DataManager")]
     public DataManager dataManager;
-    //public Image fadeImg;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,10 @@ public class Result : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            roundClear();
+        }
         if (!doing && Input.GetKeyDown(KeyCode.Space))
         {
             if (count >= scripts.Length)
@@ -46,44 +53,76 @@ public class Result : MonoBehaviour
         }
     }
 
-    //IEnumerator fadeIn()
-    //{
-    //    doing = true;
-    //    Color fadeColor = fadeImg.color;
+    IEnumerator fadeIn()
+    {
+        doing = true;
+        Color fadeColor = fadeImg.color;
 
-    //    while (fadeColor.a > 0f)
-    //    {
-    //        fadeColor.a -= 0.01f;
-    //        fadeImg.color = fadeColor;
-    //        yield return null;
-    //    }
+        while (fadeColor.a > 0f)
+        {
+            fadeColor.a -= 0.01f;
+            fadeImg.color = fadeColor;
+            yield return null;
+        }
 
-    //    fadeColor.a = 0f;
-    //    fadeImg.color = fadeColor;
-    //    doing = false;
-    //}
+        fadeColor.a = 0f;
+        fadeImg.color = fadeColor;
+        doing = false;
+    }
 
-    //IEnumerator fadeOut()
-    //{
-    //    doing = true;
-    //    Color fadeColor = fadeImg.color;
+    IEnumerator fadeOut()
+    {
+        doing = true;
+        Color fadeColor = fadeImg.color;
 
-    //    while (fadeColor.a <= 1f)
-    //    {
-    //        fadeColor.a += 0.01f;
-    //        fadeImg.color = fadeColor;
-    //        yield return null;
-    //    }
+        while (fadeColor.a <= 1f)
+        {
+            fadeColor.a += 0.01f;
+            fadeImg.color = fadeColor;
+            yield return null;
+        }
 
-    //    fadeColor.a = 1f;
-    //    fadeImg.color = fadeColor;
-    //    doing = false;
-    //}
+        fadeColor.a = 1f;
+        fadeImg.color = fadeColor;
+        doing = false;
+    }
+
+    IEnumerator fadeOutIn()
+    {
+        doing = true;
+        Color fadeColor = fadeImg.color;
+
+        while (fadeColor.a <= 1f)
+        {
+            fadeColor.a += 0.01f;
+            fadeImg.color = fadeColor;
+            yield return null;
+        }
+
+        fadeColor.a = 1f;
+        fadeImg.color = fadeColor;
+
+        resultObj.SetActive(true);
+
+        while (fadeColor.a > 0f)
+        {
+            fadeColor.a -= 0.01f;
+            fadeImg.color = fadeColor;
+            yield return null;
+        }
+
+        fadeColor.a = 0f;
+        fadeImg.color = fadeColor;
+        doing = false;
+    }
 
     public void roundClear()
     {
         Time.timeScale = 0f;
         count = 0;
+        doing = true;
+        StartCoroutine("fadeOutIn");
+
 
         title.text = "N 년차 완료";
 
