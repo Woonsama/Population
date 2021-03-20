@@ -14,6 +14,12 @@ public class Player : ObjectBase, IMove, ICatch
     [Header("확인용 - 적과 가까이 있는지")]
     [SerializeField] private bool isNear = false;
 
+    [Header("Clip - Walk")]
+    public AudioClip clip_Walk;
+
+    [Header("SoundManager")]
+    public SoundManager soundManager;
+
     private Truck truck;
 
     private GameObject target;
@@ -23,6 +29,12 @@ public class Player : ObjectBase, IMove, ICatch
 
     protected override IEnumerator OnAwakeCoroutine()
     {
+        //Sound Setting
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager.audioSource_Player_Walk = GetComponent<AudioSource>();
+        soundManager.SetWalk_Player(clip_Walk, true);
+        soundManager.SetVolume_Player_Walk(0.3f);
+
         skeletonAnimation = GetComponent<SkeletonAnimation>();
         skeletonAnimation.state.SetAnimation(0, "idle", true);
 
@@ -61,11 +73,12 @@ public class Player : ObjectBase, IMove, ICatch
 
         if(x != 0 || y != 0)
         {
+            soundManager.PlayWalk_Player();
             SetAnimation("walk", true);
         }
         else if(x == 0 && y == 0)
         {
-            //skeletonAnimation.name = "idle";
+            soundManager.StopWalk_Player();
             SetAnimation("idle", true);
         }
 

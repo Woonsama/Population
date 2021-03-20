@@ -114,11 +114,15 @@ public class CitizenController : MonoBehaviour
                 break;
             case EEventType.Festival:
                 "축제 발생".Log();
-                gameData.citizenCnt.youngCnt = gameData.citizenCnt.youngCnt +  (int)(addedCitizenTemp.young * 1.5f);
+                gameData.citizenCnt.youngCnt.Log();
+                addedCitizenTemp.young.Log();
+                gameData.citizenCnt.youngCnt = (gameData.citizenCnt.youngCnt - addedCitizenTemp.young) + (int)(addedCitizenTemp.young * 1.5f);
                 break;
             case EEventType.Chosik:
                 "초식 발생".Log();
-                gameData.citizenCnt.youngCnt = gameData.citizenCnt.youngCnt + (int)(addedCitizenTemp.young * 0.5f);
+                gameData.citizenCnt.youngCnt.Log();
+                addedCitizenTemp.young.Log();
+                gameData.citizenCnt.youngCnt = (gameData.citizenCnt.youngCnt - addedCitizenTemp.young) + (int)(addedCitizenTemp.young * 0.5f);
                 break;
             case EEventType.HoiChun:
                 "회춘 발생".Log();
@@ -187,7 +191,12 @@ public class CitizenController : MonoBehaviour
         int priorWomenCount = gameData.citizenCnt.womenCnt;
         int prioroldCount = gameData.citizenCnt.oldCnt;
 
+        ("PriorYoungCount" + gameData.citizenCnt.youngCnt).Log();
+
         addedCitizenTemp.Reset();
+
+        ("temp" + addedCitizenTemp.young).Log();
+
 
         //다음 스테이지 인원 정리
 
@@ -379,6 +388,6 @@ public class AddedCitizenTemp
 
     public void Reset()
     {
-        young = man = women = old;
+        young = man = women = old = 0;
     }
 }
