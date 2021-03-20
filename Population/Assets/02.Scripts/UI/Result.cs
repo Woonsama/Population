@@ -12,12 +12,12 @@ public class Result : MonoBehaviour
     private string[] scripts;
 
     private bool doing = false;
-    public Image fadeImg;
+    //public Image fadeImg;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("fadeIn");
+        //StartCoroutine("fadeIn");
         // 엔딩에 따라 scrips에 저장되는 내용에 달라짐
         roundClear();
         //badeEnding();
@@ -34,46 +34,46 @@ public class Result : MonoBehaviour
         {
             if (count >= scripts.Length)
             {
-                StartCoroutine("fadeOut");
+                //StartCoroutine("fadeOut");
                 return;
             }
             contents.text = scripts[count++];
         }
     }
 
-    IEnumerator fadeIn()
-    {
-        doing = true;
-        Color fadeColor = fadeImg.color;
+    //IEnumerator fadeIn()
+    //{
+    //    doing = true;
+    //    Color fadeColor = fadeImg.color;
 
-        while (fadeColor.a > 0f)
-        {
-            fadeColor.a -= 0.01f;
-            fadeImg.color = fadeColor;
-            yield return null;
-        }
+    //    while (fadeColor.a > 0f)
+    //    {
+    //        fadeColor.a -= 0.01f;
+    //        fadeImg.color = fadeColor;
+    //        yield return null;
+    //    }
 
-        fadeColor.a = 0f;
-        fadeImg.color = fadeColor;
-        doing = false;
-    }
+    //    fadeColor.a = 0f;
+    //    fadeImg.color = fadeColor;
+    //    doing = false;
+    //}
 
-    IEnumerator fadeOut()
-    {
-        doing = true;
-        Color fadeColor = fadeImg.color;
+    //IEnumerator fadeOut()
+    //{
+    //    doing = true;
+    //    Color fadeColor = fadeImg.color;
 
-        while (fadeColor.a <= 1f)
-        {
-            fadeColor.a += 0.01f;
-            fadeImg.color = fadeColor;
-            yield return null;
-        }
+    //    while (fadeColor.a <= 1f)
+    //    {
+    //        fadeColor.a += 0.01f;
+    //        fadeImg.color = fadeColor;
+    //        yield return null;
+    //    }
 
-        fadeColor.a = 1f;
-        fadeImg.color = fadeColor;
-        doing = false;
-    }
+    //    fadeColor.a = 1f;
+    //    fadeImg.color = fadeColor;
+    //    doing = false;
+    //}
 
     public void roundClear()
     {
