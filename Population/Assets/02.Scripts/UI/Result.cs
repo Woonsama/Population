@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Result : MonoBehaviour
 {
@@ -62,8 +63,16 @@ public class Result : MonoBehaviour
         fadeColor.a = 1f;
         fadeImg.color = fadeColor;
 
+
         if (count >= scripts.Length)
+        {
+            if (title.text == "주민이 모두 떠났습니다")
+            {
+                SceneManager.LoadScene("Ending");
+            }
             resultObj.SetActive(false);
+
+        }
         else
             resultObj.SetActive(true);
 
@@ -78,10 +87,16 @@ public class Result : MonoBehaviour
         fadeImg.color = fadeColor;
         doing = false;
 
+        // 결과창 끝. 이동
         if (count >= scripts.Length)
         {
             Time.timeScale = 1f;
             this.gameObject.SetActive(false);
+
+            if(title.text == "당신은 마을을 지켰습니다")
+            {
+                SceneManager.LoadScene("Title");
+            }
         }
     }
     
