@@ -111,19 +111,25 @@ public class CitizenController : MonoBehaviour
         switch (gameData.eEventType)
         {
             case EEventType.HyungZak:
+                "흉작 발생".Log();
                 gameData.needPoint += 5;
                 break;
             case EEventType.PoongZak:
+                "풍작 발생".Log();
                 gameData.needPoint -= 5;
                 break;
             case EEventType.Festival:
+                "축제 발생".Log();
                 gameData.citizenCnt.youngCnt = (int)(gameData.citizenCnt.youngCnt * 1.5f);
                 break;
             case EEventType.Chosik:
+                "초식 발생".Log();
                 gameData.citizenCnt.youngCnt = (int)(gameData.citizenCnt.youngCnt * 0.5f);
                 break;
             case EEventType.HoiChun:
-                for(int i = 0; i < gameData.citizenCnt.oldCnt; i++)
+                "회춘 발생".Log();
+
+                for (int i = 0; i < gameData.citizenCnt.oldCnt; i++)
                 {
                     if (Random.Range(0, 100) < 15)
                     {
@@ -136,6 +142,7 @@ public class CitizenController : MonoBehaviour
                 }
                 break;
             case EEventType.Goryujang:
+                "고려장 발생".Log();
                 gameData.citizenCnt.oldCnt = 0;
                 break;
             default:
