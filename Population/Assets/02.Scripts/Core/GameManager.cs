@@ -13,9 +13,6 @@ public class GameManager : MonoBehaviour
     [Header("클리어 매니저")]
     public ClearManager clearManager;
 
-    [Header("트럭")]
-    public Truck truck;
-
     private DataManager dataManager = new DataManager();
 
     private void Awake()
@@ -27,6 +24,7 @@ public class GameManager : MonoBehaviour
     {       
         for(int i = 0; i < Const.c_MaxWaveCnt; i++)
         {
+            "새 웨이브".Log();
             yield return StartCoroutine(Wave_Coroutine());
         }
 
@@ -66,8 +64,6 @@ public class GameManager : MonoBehaviour
 
         clearManager.isWaveClear = false;
 
-        truck.ActiveOn();
-
         //클리어 까지 대기
         while(!clearManager.isWaveClear)
         {
@@ -84,8 +80,6 @@ public class GameManager : MonoBehaviour
         {
             //웨이브 클리어 처리
             WaveClear();
-
-            truck.ActiveOff();
         }
     }
 }

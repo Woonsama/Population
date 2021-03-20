@@ -55,6 +55,7 @@ public class GameData
 {
     public int point { get; private set; }
     public int currentHumanCnt { get; private set; }
+    public int minHumanCnt { get; private set;  }
     public CitizenCnt citizenCnt = new CitizenCnt();
 
     public GameData()

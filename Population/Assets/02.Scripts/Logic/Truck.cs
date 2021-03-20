@@ -6,28 +6,29 @@ public class Truck : ObjectBase
 {
     [Header("확인용 - 플레이어 접근")]
     public Player player;
+    public GameObject playerObj;
 
     [Header("접근 범위")]
     public float distance;
 
-    [Header("확인용 - 플레이어와 가까이 있는지")]
-    [SerializeField] private bool isNear= false;
+    [Header("확인용 - 현재 거리")]
+    public float currentDistance;
 
-    private void Update()
-    {
-        CheckPlayer();
-    }
+    [Header("확인용 - 플레이어와 가까이 있는지")]
+    public bool isNear= false;
 
     public void SetPlayer(Player player)
     {
         this.player = player;
+        playerObj = player.gameObject;
     }
 
-    public void CheckPlayer()
+    private void Update()
     {
-        if(player != null)
+        if (playerObj != null)
         {
-            if (Vector2.Distance(player.transform.position, transform.position) < distance)
+            currentDistance = Vector2.Distance(playerObj.transform.position, transform.position);
+            if (currentDistance < distance)
             {
                 isNear = true;
             }
@@ -38,13 +39,24 @@ public class Truck : ObjectBase
         }
     }
 
-    public void ActiveOn()
+    public void Lift()
     {
-        gameObject.SetActive(true);
-    }
+        if(playerObj != null)
+        {
+            if (playerObj.transform.GetChild(2).gameObject != null)
+            {
+                GameObject citizenObj = playerObj.transform.GetChild(2).gameObject;
+                Citizen citizen = citizenObj.GetComponent<Citizen>();
 
-    public void ActiveOff()
-    {
-        gameObject.SetActive(false);
+                citizen.transform.SetParent(null);
+
+                GameObject.Destroy(citizenObj);
+            }
+            "Test".Log();
+        }
+        else
+        {
+            isNear = false;
+        }
     }
 }
