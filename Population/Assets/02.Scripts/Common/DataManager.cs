@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataManager
+[System.Serializable]
+
+public class DataManager : MonoBehaviour
 {
     public WaveData waveData = new WaveData();
     public GameData gameData = new GameData();

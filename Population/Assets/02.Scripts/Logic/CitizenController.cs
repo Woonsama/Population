@@ -77,7 +77,7 @@ public class CitizenController : MonoBehaviour
         gameData.needPoint = (gameData.citizenCnt.oldCnt * 1) +
                              (gameData.citizenCnt.womenCnt * 3) +
                              (gameData.citizenCnt.manCnt * 2) +
-                             (gameData.citizenCnt.youngCnt * 5);
+                             (gameData.citizenCnt.youngCnt * 5) * (int)(citizenChangePercent.needPointPercent *0.01);
 
         //토탈 카운트
         gameData.totalHumanCnt = gameData.citizenCnt.GetCurrentCount();
@@ -102,7 +102,7 @@ public class CitizenController : MonoBehaviour
         gameData.needPoint = (gameData.citizenCnt.oldCnt * 1) +
                              (gameData.citizenCnt.womenCnt * 3) +
                              (gameData.citizenCnt.manCnt * 2) +
-                             (gameData.citizenCnt.youngCnt * 5);
+                             (gameData.citizenCnt.youngCnt * 5) * (int)(citizenChangePercent.needPointPercent * 0.01);
 
         //이벤트 수치
         gameData.SetEventType();
@@ -350,4 +350,7 @@ public class CitizenChangePercent
 
     [Header("여자가 죽을 확률")]
     public int womenDie;
+
+    [Header("웨이브 당 필요 포인트 퍼센트")]
+    public int needPointPercent;
 }

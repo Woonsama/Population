@@ -24,26 +24,22 @@ public class UIManager : MonoBehaviour
 
     public GameObject optionPopup = null;
 
-    private DataManager dataManager = new DataManager();
+    [Header("데이터 매니저")]
+    public DataManager dataManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        // seting
-        setCount(Kind.CHILD, dataManager.gameData.citizenCnt.youngCnt);
-        setCount(Kind.MAN, dataManager.gameData.citizenCnt.manCnt);
-        setCount(Kind.WOMAN, dataManager.gameData.citizenCnt.womenCnt);
-        setCount(Kind.OLD, dataManager.gameData.citizenCnt.oldCnt);
+        SetText();
 
-        setPoint(dataManager.gameData.needPoint);
-
-        setPopulation(dataManager.gameData.currentHumanCnt, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
+        SetText();
+
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             option = !option;
@@ -58,7 +54,21 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
+    }
 
+    private void SetText()
+    {
+        // seting
+        setCount(Kind.CHILD, dataManager.gameData.citizenCnt.youngCnt);
+        setCount(Kind.MAN, dataManager.gameData.citizenCnt.manCnt);
+        setCount(Kind.WOMAN, dataManager.gameData.citizenCnt.womenCnt);
+        setCount(Kind.OLD, dataManager.gameData.citizenCnt.oldCnt);
+
+        setYear(dataManager.waveData.wave.curWave);
+
+        setPoint(dataManager.gameData.needPoint);
+
+        setPopulation(dataManager.gameData.currentHumanCnt, dataManager.gameData.minHumanCnt);
     }
 
     public void setYear(int year)

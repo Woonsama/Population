@@ -20,6 +20,16 @@ public class Truck : ObjectBase
     [Header("확인용 - 시민 보유 여부")]
     public bool isCitizen = false;
 
+    [Header("데이터매니저")]
+    public DataManager dataManager;
+
+    [Header("차감 될 데이터 [포인트]")]
+    public int youngCnt;
+    public int manCnt;
+    public int womenCnt;
+    public int oldCnt;
+
+
     public void SetPlayer(Player player)
     {
         this.player = player;
@@ -65,7 +75,29 @@ public class Truck : ObjectBase
 
             if (isNear)
             {
+                switch (citizen.eCitizenType)
+                {
+                    case Citizen.ECitizenType.Young:
+                        dataManager.gameData.citizenCnt.youngCnt--;
+                        dataManager.gameData.needPoint -= youngCnt;
+                        break;
+                    case Citizen.ECitizenType.Man:
+                        dataManager.gameData.citizenCnt.manCnt--;
+                        dataManager.gameData.needPoint -= manCnt;
+                        break;
+                    case Citizen.ECitizenType.Women:
+                        dataManager.gameData.citizenCnt.womenCnt--;
+                        dataManager.gameData.needPoint -= womenCnt;
+                        break;
+                    case Citizen.ECitizenType.Old:
+                        dataManager.gameData.citizenCnt.oldCnt--;
+                        dataManager.gameData.needPoint -= oldCnt;
+                        break;
+                    default:
+                        break;
+                }
 
+                dataManager.gameData.currentHumanCnt= dataManager.gameData.citizenCnt.GetCurrentCount();
 
                 GameObject.Destroy(citizenObj);
                 isNear = false;

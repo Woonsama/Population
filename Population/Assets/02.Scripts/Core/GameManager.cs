@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     [Header("클리어 매니저")]
     public ClearManager clearManager;
 
-    private DataManager dataManager = new DataManager();
+    [Header("데이터매니저")]
+    public DataManager dataManager;
 
     private void Awake()
     {
