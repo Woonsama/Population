@@ -24,7 +24,7 @@ public class CitizenController : MonoBehaviour
     [Header("시민 리스트")]
     public List<GameObject> list_Citizen = new List<GameObject>();
 
-    public void Init()
+    public void Init(GameData gameData)
     {
         list_Citizen.Clear();
 
@@ -51,6 +51,23 @@ public class CitizenController : MonoBehaviour
         {
             CreateCitizen(old, "Old");
         }
+
+        gameData.citizenCnt.youngCnt = Const.c_Initial_Young_Cnt;
+        gameData.citizenCnt.manCnt = Const.c_Initial_Man_Cnt;
+        gameData.citizenCnt.womenCnt = Const.c_Initial_WomenCnt;
+        gameData.citizenCnt.oldCnt = Const.c_Initial_Old_Cnt;
+
+        //현재 인원 수
+        gameData.currentHumanCnt = gameData.citizenCnt.GetTotalCount();
+
+        //최소 인원 수
+        gameData.minHumanCnt = gameData.currentHumanCnt / (citizenChangePercent.minPopulationPercent / 100);
+
+        //필요 포인트
+        gameData.needPoint = (gameData.citizenCnt.oldCnt * 1) +
+                             (gameData.citizenCnt.womenCnt * 3) +
+                             (gameData.citizenCnt.manCnt * 2) +
+                             (gameData.citizenCnt.youngCnt * 5);
     }
 
     public void ClearCitizen(GameData gameData)
@@ -238,5 +255,5 @@ public class CitizenChangePercent
     public int oldToDie;
 
     [Header("최저 인구수 비율")]
-    public int populationPercent;
+    public int minPopulationPercent;
 }
