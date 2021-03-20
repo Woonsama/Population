@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "HtxHp0RsjCOWWeQyoj8tYGtfFYM",
+	"hash": "HUS05TbJtauljsVW7qWiWSTMmJs",
 	"spine": "3.8.99",
 	"x": -127.51,
 	"y": -2.13,
@@ -182,22 +182,22 @@
 				"rotate": [
 					{},
 					{ "time": 0.1333, "angle": 5.72 },
-					{ "time": 0.4667 }
+					{ "time": 0.3333 }
 				],
 				"translate": [
 					{ "curve": "stepped" },
-					{ "time": 0.4667 }
+					{ "time": 0.3333 }
 				]
 			},
 			"arm_left2": {
 				"rotate": [
 					{},
 					{ "time": 0.2, "angle": 6.91 },
-					{ "time": 0.4667 }
+					{ "time": 0.3333 }
 				],
 				"translate": [
 					{ "curve": "stepped" },
-					{ "time": 0.4667 }
+					{ "time": 0.3333 }
 				]
 			},
 			"arm_right1": {
@@ -205,23 +205,22 @@
 					{ "angle": -1.05 },
 					{ "time": 0.0667 },
 					{ "time": 0.2, "angle": -5.23 },
-					{ "time": 0.4667, "angle": -1.05 }
+					{ "time": 0.3333, "angle": -1.05 }
 				],
 				"translate": [
 					{ "curve": "stepped" },
-					{ "time": 0.4667 }
+					{ "time": 0.3333 }
 				]
 			},
 			"arm_right2": {
 				"rotate": [
 					{ "angle": -4.85 },
 					{ "time": 0.1333 },
-					{ "time": 0.3333, "angle": -9.71 },
-					{ "time": 0.4667, "angle": -4.85 }
+					{ "time": 0.3333, "angle": -4.85 }
 				],
 				"translate": [
 					{ "curve": "stepped" },
-					{ "time": 0.4667 }
+					{ "time": 0.3333 }
 				]
 			}
 		}
