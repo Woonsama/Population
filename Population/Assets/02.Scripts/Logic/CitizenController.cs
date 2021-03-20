@@ -68,16 +68,14 @@ public class CitizenController : MonoBehaviour
         //현재 인원 수
         gameData.currentHumanCnt = gameData.citizenCnt.GetCurrentCount();
 
-        citizenChangePercent.minPopulationPercent.Log();
-
         //최소 인원 수
-        gameData.minHumanCnt = (int)(gameData.currentHumanCnt / (citizenChangePercent.minPopulationPercent * 0.01));
+        gameData.minHumanCnt = (int)(gameData.currentHumanCnt * (citizenChangePercent.minPopulationPercent * 0.01));
 
         //필요 포인트
-        gameData.needPoint = (gameData.citizenCnt.oldCnt * 1) +
+        gameData.needPoint = (int)(((gameData.citizenCnt.oldCnt * 1) +
                              (gameData.citizenCnt.womenCnt * 3) +
                              (gameData.citizenCnt.manCnt * 2) +
-                             (gameData.citizenCnt.youngCnt * 5) * (int)(citizenChangePercent.needPointPercent *0.01);
+                             (gameData.citizenCnt.youngCnt * 5)) * (citizenChangePercent.needPointPercent *0.01));
 
         //토탈 카운트
         gameData.totalHumanCnt = gameData.citizenCnt.GetCurrentCount();
@@ -96,13 +94,13 @@ public class CitizenController : MonoBehaviour
         list_Citizen.Clear();
 
         //최소 인원 수
-        gameData.minHumanCnt = (int)(gameData.currentHumanCnt / (citizenChangePercent.minPopulationPercent * 0.01));
+        gameData.minHumanCnt = (int)(gameData.currentHumanCnt * (citizenChangePercent.minPopulationPercent * 0.01));
 
         //필요 포인트
-        gameData.needPoint = (gameData.citizenCnt.oldCnt * 1) +
+        gameData.needPoint = (int)(((gameData.citizenCnt.oldCnt * 1) +
                              (gameData.citizenCnt.womenCnt * 3) +
                              (gameData.citizenCnt.manCnt * 2) +
-                             (gameData.citizenCnt.youngCnt * 5) * (int)(citizenChangePercent.needPointPercent * 0.01);
+                             (gameData.citizenCnt.youngCnt * 5)) * (citizenChangePercent.needPointPercent * 0.01));
 
         //이벤트 수치
         gameData.SetEventType();
