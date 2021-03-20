@@ -236,4 +236,7 @@ public class CitizenChangePercent
 
     [Header("노인이 사망할 확률")]
     public int oldToDie;
+
+    [Header("최저 인구수 비율")]
+    public int populationPercent;
 }

@@ -60,7 +60,7 @@ public class Citizen : ObjectBase, IMove
         }
     }
 
-    private void SetAnimation(string name, bool loop)
+    public void SetAnimation(string name, bool loop)
     {
         skeletonAnimation.AnimationName = name;
         skeletonAnimation.loop = loop;

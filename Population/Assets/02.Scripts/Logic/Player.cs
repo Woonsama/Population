@@ -76,15 +76,19 @@ public class Player : ObjectBase, IMove, ICatch
                 target.GetComponent<BoxCollider2D>().enabled = false;
                 "시민을 잡았습니다".Log();
                 target.GetComponent<Citizen>().citizenState.eState = CitizenState.EState.CATCHED;
+                target.GetComponent<Citizen>().SetAnimation("badoongbadoong", true);
+                target.transform.position = transform.GetChild(0).transform.position;
+                target.transform.eulerAngles = new Vector3(target.transform.eulerAngles.x, target.transform.eulerAngles.y, 90);
                 isCatch = true;
             }
             else if (isNear && isCatch || !isNear && isCatch)
             {
                 target.GetComponent<BoxCollider2D>().enabled = true;
                 "시민을 놓아주었습니다".Log();
+
+                truck.Lift();
                 if(truck.isNear)
                 {
-                    truck.Lift();
                     target.GetComponent<Citizen>().citizenState.eState = CitizenState.EState.DIE;
                 }
                 else

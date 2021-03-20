@@ -17,6 +17,9 @@ public class Truck : ObjectBase
     [Header("확인용 - 플레이어와 가까이 있는지")]
     public bool isNear= false;
 
+    [Header("확인용 - 시민 보유 여부")]
+    public bool isCitizen = false;
+
     public void SetPlayer(Player player)
     {
         this.player = player;
@@ -28,13 +31,7 @@ public class Truck : ObjectBase
         if (playerObj != null)
         {
             currentDistance = Vector2.Distance(playerObj.transform.position, transform.position);
-        }
-    }
 
-    public void Lift()
-    {
-        if(playerObj != null)
-        {
             if (currentDistance < distance)
             {
                 isNear = true;
@@ -44,15 +41,40 @@ public class Truck : ObjectBase
                 isNear = false;
             }
 
-            if (playerObj.transform.GetChild(2).gameObject != null && isNear)
+            if (playerObj.transform.childCount == 3)
             {
-                GameObject citizenObj = playerObj.transform.GetChild(2).gameObject;
-                Citizen citizen = citizenObj.GetComponent<Citizen>();
-
-                citizen.transform.SetParent(null);
-
-                GameObject.Destroy(citizenObj);
+                isCitizen = true;
+            }
+            else
+            {
+                isCitizen = false;
             }
         }
+    }
+
+    public void Lift()
+    {
+        if (isCitizen)
+        {
+            GameObject citizenObj = playerObj.transform.GetChild(2).gameObject;
+            Citizen citizen = citizenObj.GetComponent<Citizen>();      
+            citizen.transform.SetParent(null);
+
+            citizen.transform.position = playerObj.transform.GetChild(1).transform.position;
+            citizen.transform.eulerAngles = Vector3.zero;
+
+            if (isNear)
+            {
+
+
+                GameObject.Destroy(citizenObj);
+                isNear = false;
+            }
+        }
+    }
+
+    private void SetPoint()
+    {
+
     }
 }
