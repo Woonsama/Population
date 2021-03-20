@@ -1,0 +1,34 @@
+
+population_children.png
+size: 311,133
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 2
+  rotate: false
+  xy: 173, 4
+  size: 89, 127
+  orig: 90, 130
+  offset: 0, 0
+  index: -1
+arm_left
+  rotate: false
+  xy: 264, 71
+  size: 45, 60
+  orig: 45, 60
+  offset: 0, 0
+  index: -1
+arm_right
+  rotate: false
+  xy: 264, 13
+  size: 45, 56
+  orig: 45, 56
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 2, 2
+  size: 169, 129
+  orig: 169, 129
+  offset: 0, 0
+  index: -1
