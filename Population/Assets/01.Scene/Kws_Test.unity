@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1652903814}
-  player: {fileID: 6367115934579843102, guid: 9e3a2016e0782ea42bd09454335ac95e, type: 3}
+  player: {fileID: 6367115934579843102, guid: e1a6168de3cf680439757681decac33f, type: 3}
   playerCreatePos: {x: -3, y: 0}
 --- !u!4 &170826786
 Transform:
@@ -545,10 +545,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2d8001a77387243ae3b9ec6a25cb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  young: {fileID: 3117928892025716321, guid: 8b570df2a14c8d142969038312b1cc47, type: 3}
-  man: {fileID: 797109415707856347, guid: 2b5fbc6e0a33965438b2919b0de5be58, type: 3}
-  women: {fileID: 3291066638881741767, guid: 3d8852c7111eaf54397435b52caa1092, type: 3}
-  old: {fileID: 6308117257707714123, guid: 4207898fa13a630478627867da809d4d, type: 3}
+  young: {fileID: 3117928892025716321, guid: 2968336e54ae0ce44b89dd782a874d1b, type: 3}
+  man: {fileID: 797109415707856347, guid: 0114921df0798fc4ab4bdda2b31c8d0e, type: 3}
+  women: {fileID: 3291066638881741767, guid: 004bfbac6b2ca87478aba5c3fb45c628, type: 3}
+  old: {fileID: 6308117257707714123, guid: 2c312001df666ad4a8e08f07258ed5d2, type: 3}
   citizenChangePercent:
     youngToAdult: 75
     young_man: 50
