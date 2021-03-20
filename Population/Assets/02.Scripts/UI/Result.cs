@@ -12,6 +12,9 @@ public class Result : MonoBehaviour
     private string[] scripts;
 
     private bool doing = false;
+
+    [Header("DataManager")]
+    public DataManager dataManager;
     //public Image fadeImg;
 
     // Start is called before the first frame update

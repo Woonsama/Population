@@ -35,6 +35,11 @@ public class Player : ObjectBase, IMove, ICatch
     {
         Move();
         Catch();
+
+        if(transform.childCount == 3)
+        {
+            transform.GetChild(2).transform.position = transform.GetChild(0).transform.position;
+        }
     }
 
     private void SetAnimation(string name, bool loop)
