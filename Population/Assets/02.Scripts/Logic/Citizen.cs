@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 public class Citizen : ObjectBase, IMove
 {
@@ -21,8 +22,13 @@ public class Citizen : ObjectBase, IMove
 
     private float behiviourDelayTime = 0;
 
+    private SkeletonAnimation skeletonAnimation;
+
     protected override IEnumerator OnAwakeCoroutine()
     {
+        skeletonAnimation = GetComponent<SkeletonAnimation>();
+        skeletonAnimation.state.SetAnimation(0, "idle", true);
+
         StartCoroutine(Behaviour_Coroutine());
         return base.OnAwakeCoroutine();
     }
@@ -54,6 +60,12 @@ public class Citizen : ObjectBase, IMove
         }
     }
 
+    private void SetAnimation(string name, bool loop)
+    {
+        skeletonAnimation.AnimationName = name;
+        skeletonAnimation.loop = loop;
+    }
+
     public void Move()
     {
         switch (citizenState.eMoveState)
@@ -61,19 +73,24 @@ public class Citizen : ObjectBase, IMove
             case CitizenState.EMoveState.LEFT:
                 transform.position += (Vector3)(Vector2.left * citizenState.moveSpeed * Time.deltaTime);
                 transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+                SetAnimation("walk", true);
                 break;
             case CitizenState.EMoveState.RIGHT:
                 transform.position += (Vector3)(Vector2.right * citizenState.moveSpeed * Time.deltaTime);
                 transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
+                SetAnimation("walk", true);
                 break;
             case CitizenState.EMoveState.UP:
                 transform.position += (Vector3)(Vector2.up * citizenState.moveSpeed * Time.deltaTime);
+                SetAnimation("walk", true);
                 break;
             case CitizenState.EMoveState.DOWN:
                 transform.position += (Vector3)(Vector2.down * citizenState.moveSpeed * Time.deltaTime);
+                SetAnimation("walk", true);
                 break;
             case CitizenState.EMoveState.STOP:
                 transform.position += (Vector3)Vector2.zero;
+                SetAnimation("idle", true);
                 break;
             default:
                 break;

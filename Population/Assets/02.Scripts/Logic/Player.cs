@@ -24,6 +24,7 @@ public class Player : ObjectBase, IMove, ICatch
     protected override IEnumerator OnAwakeCoroutine()
     {
         skeletonAnimation = GetComponent<SkeletonAnimation>();
+        skeletonAnimation.state.SetAnimation(0, "idle", true);
 
         truck = GameObject.Find("Truck").GetComponent<Truck>();
         truck.SetPlayer(this);
@@ -34,6 +35,12 @@ public class Player : ObjectBase, IMove, ICatch
     {
         Move();
         Catch();
+    }
+
+    private void SetAnimation(string name, bool loop)
+    {
+        skeletonAnimation.AnimationName = name;
+        skeletonAnimation.loop = loop;
     }
 
     public void Move()
@@ -49,14 +56,12 @@ public class Player : ObjectBase, IMove, ICatch
 
         if(x != 0 || y != 0)
         {
-            "Test".Log();
-            //skeletonAnimation.name = "walk";
-            skeletonAnimation.state.SetAnimation(0, "walk", true);
+            SetAnimation("walk", true);
         }
         else if(x == 0 && y == 0)
         {
             //skeletonAnimation.name = "idle";
-            skeletonAnimation.state.SetAnimation(0, "idle", true);
+            SetAnimation("idle", true);
         }
 
     }
