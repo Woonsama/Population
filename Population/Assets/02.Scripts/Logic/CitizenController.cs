@@ -27,6 +27,9 @@ public class CitizenController : MonoBehaviour
     [Header("확인용 - 현재 전체 인구 수")]
     public int totalPopular;
 
+    [Header("확인용 - 이번에 추가된 시민들")]
+    public AddedCitizenTemp addedCitizenTemp;
+
     //1스테이지 전용 세팅
     public void Init(ref GameData gameData)
     {
@@ -111,11 +114,11 @@ public class CitizenController : MonoBehaviour
                 break;
             case EEventType.Festival:
                 "축제 발생".Log();
-                gameData.citizenCnt.youngCnt = (int)(gameData.citizenCnt.youngCnt * 1.5f);
+                gameData.citizenCnt.youngCnt = gameData.citizenCnt.youngCnt +  (int)(addedCitizenTemp.young * 1.5f);
                 break;
             case EEventType.Chosik:
                 "초식 발생".Log();
-                gameData.citizenCnt.youngCnt = (int)(gameData.citizenCnt.youngCnt * 0.5f);
+                gameData.citizenCnt.youngCnt = gameData.citizenCnt.youngCnt + (int)(addedCitizenTemp.young * 0.5f);
                 break;
             case EEventType.HoiChun:
                 "회춘 발생".Log();
@@ -124,17 +127,14 @@ public class CitizenController : MonoBehaviour
                 {
                     if (Random.Range(0, 100) < 15)
                     {
-                        if (gameData.citizenCnt.youngCnt > 1)
-                        {
-                            gameData.citizenCnt.oldCnt--;
-                            gameData.citizenCnt.youngCnt++;
-                        }
+                        gameData.citizenCnt.oldCnt--;
+                        gameData.citizenCnt.youngCnt++;
                     }
                 }
                 break;
             case EEventType.Goryujang:
                 "고려장 발생".Log();
-                gameData.citizenCnt.oldCnt = 0;
+                gameData.citizenCnt.oldCnt = addedCitizenTemp.old;
                 break;
             default:
                 break;
@@ -187,6 +187,8 @@ public class CitizenController : MonoBehaviour
         int priorWomenCount = gameData.citizenCnt.womenCnt;
         int prioroldCount = gameData.citizenCnt.oldCnt;
 
+        addedCitizenTemp.Reset();
+
         //다음 스테이지 인원 정리
 
         for (int i = 0; i < prioroldCount; i++)
@@ -233,6 +235,7 @@ public class CitizenController : MonoBehaviour
             if (Random.Range(1, 100 + 1) <= citizenChangePercent.womenGenerate)
             {
                 gameData.citizenCnt.youngCnt++;
+                addedCitizenTemp.young++;
             }
         }
 
@@ -243,6 +246,8 @@ public class CitizenController : MonoBehaviour
             {
                 gameData.citizenCnt.womenCnt--;
                 gameData.citizenCnt.oldCnt++;
+
+                addedCitizenTemp.old++;
             }
         }
 
@@ -268,6 +273,8 @@ public class CitizenController : MonoBehaviour
             {
                 gameData.citizenCnt.manCnt--;
                 gameData.citizenCnt.oldCnt++;
+
+                addedCitizenTemp.old++;
             }
         }
 
@@ -359,4 +366,19 @@ public class CitizenChangePercent
 
     [Header("웨이브 당 필요 포인트 퍼센트")]
     public int needPointPercent;
+}
+
+[System.Serializable]
+
+public class AddedCitizenTemp
+{
+    public int young;
+    public int man;
+    public int women;
+    public int old;
+
+    public void Reset()
+    {
+        young = man = women = old;
+    }
 }
