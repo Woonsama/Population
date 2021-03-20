@@ -46,36 +46,40 @@ public class GameManager : MonoBehaviour
         "시민 생성 - Init".Log();
         if(dataManager.waveData.wave.curWave == 1)
         {
-            citizenController.Init(dataManager.gameData);
+            citizenController.Init(ref dataManager.gameData);
         }
         else
         {
-            citizenController.UpdateCitizen(dataManager.gameData);
+            citizenController.UpdateCitizen(ref dataManager.gameData);
         }
+
+        ("현재 웨이브 = " + dataManager.waveData.wave.curWave).Log();
 
         clearManager.isWaveClear = false;
 
         //클리어 까지 대기
         while(!clearManager.isWaveClear)
         {
+            if(dataManager.gameData.currentHumanCnt < dataManager.gameData.minHumanCnt)
+            {
+                //게임 패배
+            }
             yield return null;
         }
 
+        //웨이브 클리어
         dataManager.waveData.WaveClear();
+
+        "플레이어 숨김 - Clear".Log();
+        playerController.HidePlayer();
 
         if (dataManager.waveData.GetIsWaveAllClear())
         {
-            //게임 클리어
+            //게임 최종 클리어
         }
         else
         {
-            //웨이브 클리어 처리
-
-            "플레이어 삭제 - Clear".Log();
-            playerController.HidePlayer();
-
-            "시민 삭제 - Clear".Log();
-            citizenController.ClearCitizen(dataManager.gameData);
+            citizenController.SetNextYear(dataManager.gameData);
         }
     }
 }

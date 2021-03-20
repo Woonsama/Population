@@ -24,8 +24,16 @@ public class CitizenController : MonoBehaviour
     [Header("시민 리스트")]
     public List<GameObject> list_Citizen = new List<GameObject>();
 
-    public void Init(GameData gameData)
+    [Header("확인용 - 현재 전체 인구 수")]
+    public int totalPopular;
+
+    //1스테이지 전용 세팅
+    public void Init(ref GameData gameData)
     {
+        foreach (GameObject citizen in list_Citizen)
+        {
+            Destroy(citizen);
+        }
         list_Citizen.Clear();
 
         //Create Young Citizen
@@ -58,48 +66,115 @@ public class CitizenController : MonoBehaviour
         gameData.citizenCnt.oldCnt = Const.c_Initial_Old_Cnt;
 
         //현재 인원 수
-        gameData.currentHumanCnt = gameData.citizenCnt.GetTotalCount();
+        gameData.currentHumanCnt = gameData.citizenCnt.GetCurrentCount();
+
+        citizenChangePercent.minPopulationPercent.Log();
 
         //최소 인원 수
-        gameData.minHumanCnt = gameData.currentHumanCnt / (citizenChangePercent.minPopulationPercent / 100);
+        gameData.minHumanCnt = (int)(gameData.currentHumanCnt / (citizenChangePercent.minPopulationPercent * 0.01));
 
         //필요 포인트
         gameData.needPoint = (gameData.citizenCnt.oldCnt * 1) +
                              (gameData.citizenCnt.womenCnt * 3) +
                              (gameData.citizenCnt.manCnt * 2) +
                              (gameData.citizenCnt.youngCnt * 5);
+
+        //토탈 카운트
+        gameData.totalHumanCnt = gameData.citizenCnt.GetCurrentCount();
+        totalPopular = gameData.totalHumanCnt;
     }
 
-    public void ClearCitizen(GameData gameData)
+    //2 ~ 6스테이지 전용
+
+    public void UpdateCitizen(ref GameData gameData)
     {
-        foreach (GameObject citizenObj in list_Citizen)
+        foreach(GameObject citizen in list_Citizen)
         {
-            Citizen citizen = citizenObj.GetComponent<Citizen>();
-            gameData.citizenCnt.Reset();
-
-            switch (citizen.eCitizenType)
-            {
-                case Citizen.ECitizenType.Young:
-                    gameData.citizenCnt.youngCnt++;
-                    break;
-                case Citizen.ECitizenType.Man:
-                    gameData.citizenCnt.manCnt++;
-                    break;
-                case Citizen.ECitizenType.Women:
-                    gameData.citizenCnt.womenCnt++;
-                    break;
-                case Citizen.ECitizenType.Old:
-                    gameData.citizenCnt.oldCnt++;
-                    break;
-                default:
-                    break;
-            }
-
-            list_Citizen.Clear();
+            Destroy(citizen);
         }
+
+        list_Citizen.Clear();
+
+        //최소 인원 수
+        gameData.minHumanCnt = (int)(gameData.currentHumanCnt / (citizenChangePercent.minPopulationPercent * 0.01));
+
+        //필요 포인트
+        gameData.needPoint = (gameData.citizenCnt.oldCnt * 1) +
+                             (gameData.citizenCnt.womenCnt * 3) +
+                             (gameData.citizenCnt.manCnt * 2) +
+                             (gameData.citizenCnt.youngCnt * 5);
+
+        //이벤트 수치
+        gameData.SetEventType();
+
+        //Test
+        gameData.eEventType.Log();
+
+        switch (gameData.eEventType)
+        {
+            case EEventType.HyungZak:
+                gameData.needPoint += 5;
+                break;
+            case EEventType.PoongZak:
+                gameData.needPoint -= 5;
+                break;
+            case EEventType.Festival:
+                gameData.citizenCnt.youngCnt = (int)(gameData.citizenCnt.youngCnt * 1.5f);
+                break;
+            case EEventType.Chosik:
+                gameData.citizenCnt.youngCnt = (int)(gameData.citizenCnt.youngCnt * 0.5f);
+                break;
+            case EEventType.HoiChun:
+                for(int i = 0; i < gameData.citizenCnt.oldCnt; i++)
+                {
+                    if (Random.Range(0, 100) < 15)
+                    {
+                        if (gameData.citizenCnt.youngCnt > 1)
+                        {
+                            gameData.citizenCnt.oldCnt--;
+                            gameData.citizenCnt.youngCnt++;
+                        }
+                    }
+                }
+                break;
+            case EEventType.Goryujang:
+                gameData.citizenCnt.oldCnt = 0;
+                break;
+            default:
+                break;
+        }
+
+
+        gameData.totalHumanCnt = gameData.citizenCnt.GetCurrentCount();
+
+        //정리한 인원 생성
+        for (int i = 0; i < gameData.citizenCnt.youngCnt; i++)
+        {
+            CreateCitizen(young, "Young");
+        }
+
+        for (int i = 0; i < gameData.citizenCnt.manCnt; i++)
+        {
+            CreateCitizen(man, "Man");
+        }
+
+        for (int i = 0; i < gameData.citizenCnt.womenCnt; i++)
+        {
+            CreateCitizen(women, "Women");
+        }
+
+        for (int i = 0; i < gameData.citizenCnt.oldCnt; i++)
+        {
+            CreateCitizen(old, "Old");
+        }
+
+
+        ("토탈 1 = " + gameData.citizenCnt.GetCurrentCount() + "토탈 2" + list_Citizen.Count).Log();
+
+        totalPopular = list_Citizen.Count;
     }
 
-    public void UpdateCitizen(GameData gameData)
+    public void SetNextYear(GameData gameData)
     {
         int priorYoungCount = gameData.citizenCnt.youngCnt;
         int priorManCount = gameData.citizenCnt.manCnt;
@@ -108,7 +183,7 @@ public class CitizenController : MonoBehaviour
 
         //다음 스테이지 인원 정리
 
-        for(int i = 0; i < prioroldCount; i++)
+        for (int i = 0; i < prioroldCount; i++)
         {
             //노인 사망 처리
             if (Random.Range(1, 100 + 1) <= citizenChangePercent.oldToDie)
@@ -116,6 +191,35 @@ public class CitizenController : MonoBehaviour
                 gameData.citizenCnt.oldCnt--;
             }
         }
+
+        for (int i = 0; i < priorManCount; i++)
+        {
+            //남자 사망 처리
+            if (Random.Range(1, 100 + 1) <= citizenChangePercent.manDie)
+            {
+                gameData.citizenCnt.manCnt--;
+            }
+        }
+
+        for (int i = 0; i < priorWomenCount; i++)
+        {
+            //여자 사망 처리
+            if (Random.Range(1, 100 + 1) <= citizenChangePercent.womenDie)
+            {
+                gameData.citizenCnt.womenCnt--;
+            }
+        }
+
+        for (int i = 0; i < priorYoungCount; i++)
+        {
+            //아이 사망 처리
+            if (Random.Range(1, 100 + 1) <= citizenChangePercent.youngDie)
+            {
+                gameData.citizenCnt.youngCnt--;
+            }
+        }
+
+
 
         for (int i = 0; i < priorWomenCount; i++)
         {
@@ -139,12 +243,15 @@ public class CitizenController : MonoBehaviour
         for (int i = 0; i < priorManCount; i++)
         {
             //남성 -> 여성 or 남성
-            if (Random.Range(1, 100 + 1) <= citizenChangePercent.man_take)
+            if (Random.Range(1, 100 + 1) <= 50)
             {
-                if (Random.Range(1, 100 + 1) < 50)
-                    gameData.citizenCnt.womenCnt++;
-                else
-                    gameData.citizenCnt.manCnt++;
+                if (Random.Range(1, 100 + 1) <= citizenChangePercent.man_take)
+                {
+                    if (Random.Range(1, 100 + 1) < 50)
+                        gameData.citizenCnt.womenCnt++;
+                    else
+                        gameData.citizenCnt.manCnt++;
+                }
             }
         }
 
@@ -170,28 +277,6 @@ public class CitizenController : MonoBehaviour
                 else
                     gameData.citizenCnt.manCnt++;
             }
-        }
-
-
-        //정리한 인원 생성
-        for (int i = 0; i < gameData.citizenCnt.youngCnt; i++)
-        {
-            CreateCitizen(young, "Young");
-        }
-
-        for (int i = 0; i < gameData.citizenCnt.manCnt; i++)
-        {
-            CreateCitizen(man, "Man");
-        }
-
-        for (int i = 0; i < gameData.citizenCnt.womenCnt; i++)
-        {
-            CreateCitizen(women, "Women");
-        }
-
-        for (int i = 0; i < gameData.citizenCnt.oldCnt; i++)
-        {
-            CreateCitizen(old, "Old");
         }
     }
 
@@ -239,7 +324,7 @@ public class CitizenChangePercent
     [Header("아이가 어른이 되서 남자가 될 확률")]
     public int young_man;
 
-    [Header("남자가 남성 혹은 여성을 되려올 확률")]
+    [Header("남자가 남성 혹은 여성을 데려올 확률")]
     public int man_take;
 
     [Header("남자가 노인이 될 확률")]
@@ -256,4 +341,13 @@ public class CitizenChangePercent
 
     [Header("최저 인구수 비율")]
     public int minPopulationPercent;
+
+    [Header("아이가 죽을 확률")]
+    public int youngDie;
+
+    [Header("남자가 죽을 확률")]
+    public int manDie;
+
+    [Header("여자가 죽을 확률")]
+    public int womenDie;
 }

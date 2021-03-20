@@ -550,14 +550,17 @@ MonoBehaviour:
   women: {fileID: 3291066638881741767, guid: 3d8852c7111eaf54397435b52caa1092, type: 3}
   old: {fileID: 6308117257707714123, guid: 4207898fa13a630478627867da809d4d, type: 3}
   citizenChangePercent:
-    youngToAdult: 50
+    youngToAdult: 75
     young_man: 50
     man_take: 50
     manToOld: 50
-    womenGenerate: 50
+    womenGenerate: 25
     womenToOld: 50
-    oldToDie: 50
-    populationPercent: 30
+    oldToDie: 75
+    minPopulationPercent: 17
+    youngDie: 25
+    manDie: 25
+    womenDie: 25
   parent: {fileID: 80071221}
   citizenCreatePos:
   - {x: -2, y: 2}
@@ -569,6 +572,7 @@ MonoBehaviour:
   - {x: 1, y: -2}
   - {x: 0, y: -3}
   list_Citizen: []
+  totalPopular: 0
 --- !u!4 &1096901997
 Transform:
   m_ObjectHideFlags: 0
