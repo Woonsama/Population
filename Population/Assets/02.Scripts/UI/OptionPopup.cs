@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class OptionPopup : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject Sound = null;
-    [SerializeField]
-    private GameObject HowTo = null;
-    [SerializeField]
-    private GameObject Credit = null;
+    public GameObject Sound = null;
+    public GameObject HowTo = null;
+    public GameObject Credit = null;
 
-    [SerializeField]
-    private GameObject Back = null;
+    public GameObject Back = null;
 
-    [SerializeField]
-    private GameObject Buttons = null;
+    public GameObject Buttons = null;
 
     // Start is called before the first frame update
     void Start()

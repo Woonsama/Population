@@ -5,13 +5,11 @@ using UnityEngine.EventSystems;
 
 public class InfoPopup : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField]
-    private GameObject popup = null;
+    public GameObject popup = null;
 
     private float applyHeight = 0f;
 
-    [SerializeField]
-    private RectTransform image = null;
+    public RectTransform image = null;
 
     //// Start is called before the first frame update
     //void Start()

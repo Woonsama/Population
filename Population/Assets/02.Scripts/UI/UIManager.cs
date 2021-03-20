@@ -14,20 +14,15 @@ public class UIManager : MonoBehaviour
         KIN_MAX,
     };
 
-    [SerializeField]
-    private Text tYear = null;
-    [SerializeField]
-    private Text tPoint = null;
-    [SerializeField]
-    private Text tPopulation = null;
+    public Text tYear = null;
+    public Text tPoint = null;
+    public Text tPopulation = null;
 
-    [SerializeField]
-    private Text[] tCount = null; // 아이, 남성, 여성, 노인
+    public Text[] tCount = null; // 아이, 남성, 여성, 노인
 
     private bool option = false;
 
-    [SerializeField]
-    private GameObject optionPopup = null;
+    public GameObject optionPopup = null;
 
 
     //// Start is called before the first frame update
