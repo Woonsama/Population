@@ -940,6 +940,9 @@ MonoBehaviour:
   popup: {fileID: 6392238659135188945}
   popupImage: {fileID: 5836612130578089535}
   tInfo: {fileID: 2972560435057339832}
+  ePanelType: 0
+  explain: {fileID: 0}
+  citizenController: {fileID: 0}
 --- !u!1 &3231567598938447654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,6 +1535,9 @@ MonoBehaviour:
   popup: {fileID: 6085712017611661018}
   popupImage: {fileID: 63596316686267989}
   tInfo: {fileID: 2441375396689871713}
+  ePanelType: 0
+  explain: {fileID: 0}
+  citizenController: {fileID: 0}
 --- !u!1 &4867981465608365508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3684,6 +3690,9 @@ MonoBehaviour:
   popup: {fileID: 8807699203798933835}
   popupImage: {fileID: 8807699203798933834}
   tInfo: {fileID: 8807699203421909279}
+  ePanelType: 0
+  explain: {fileID: 0}
+  citizenController: {fileID: 0}
 --- !u!1 &8807699202989209951
 GameObject:
   m_ObjectHideFlags: 0
@@ -4090,6 +4099,9 @@ MonoBehaviour:
   popup: {fileID: 8807699203710843967}
   popupImage: {fileID: 8807699203710843966}
   tInfo: {fileID: 8807699203328047753}
+  ePanelType: 0
+  explain: {fileID: 0}
+  citizenController: {fileID: 0}
 --- !u!1 &8807699203250864523
 GameObject:
   m_ObjectHideFlags: 0
@@ -4223,6 +4235,9 @@ MonoBehaviour:
   popup: {fileID: 8807699202823276246}
   popupImage: {fileID: 8807699202823276245}
   tInfo: {fileID: 8807699203919188205}
+  ePanelType: 0
+  explain: {fileID: 0}
+  citizenController: {fileID: 0}
 --- !u!1 &8807699203327077327
 GameObject:
   m_ObjectHideFlags: 0
@@ -5692,7 +5707,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8807699203628109188}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8807699203704952748}
+        m_MethodName: clickExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8807699203659986969
 GameObject:
   m_ObjectHideFlags: 0
@@ -7274,6 +7300,9 @@ MonoBehaviour:
   popup: {fileID: 8807699202945376790}
   popupImage: {fileID: 8807699202945376789}
   tInfo: {fileID: 8807699204893495612}
+  ePanelType: 0
+  explain: {fileID: 0}
+  citizenController: {fileID: 0}
 --- !u!1 &8807699204110568853
 GameObject:
   m_ObjectHideFlags: 0
@@ -8232,6 +8261,9 @@ MonoBehaviour:
   popup: {fileID: 4880135174548649880}
   popupImage: {fileID: 2602582412736143814}
   tInfo: {fileID: 7939515046278185451}
+  ePanelType: 0
+  explain: {fileID: 0}
+  citizenController: {fileID: 0}
 --- !u!1 &8807699204548117007
 GameObject:
   m_ObjectHideFlags: 0

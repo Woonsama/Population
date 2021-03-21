@@ -1397,6 +1397,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8807699203704952748, guid: 5161c4adb6d4fc241ade1f2005b7d2e0,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1652903815}
     - target: {fileID: 8807699203710843966, guid: 5161c4adb6d4fc241ade1f2005b7d2e0,
         type: 3}
       propertyPath: m_AnchorMin.y

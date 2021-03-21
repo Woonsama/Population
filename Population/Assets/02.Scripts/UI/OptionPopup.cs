@@ -75,4 +75,9 @@ public class OptionPopup : MonoBehaviour
         Credit.SetActive(true);
         Back.SetActive(true);
     }
+
+    public void clickExit()
+    {
+        Application.Quit();
+    }
 }
