@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/01.Scene/Title.unity
     guid: a9dae40a8021c3944abd04855f2d7ac6
   - enabled: 1
+    path: Assets/01.Scene/Tutorial.unity
+    guid: 3a63883e96effa5469c98aac4b5a7941
+  - enabled: 1
     path: Assets/01.Scene/Kws_Test.unity
     guid: 932d22b27f6fcaa4e85958c6eb7ed1b7
   - enabled: 1
