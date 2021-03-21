@@ -66,9 +66,10 @@ public class Result : MonoBehaviour
 
         if (count >= scripts.Length)
         {
+            Time.timeScale = 1;
             if (title.text == "주민이 모두 떠났습니다")
             {
-                SceneManager.LoadScene("Ending");
+                SceneManager.LoadScene("Title");
             }
             resultObj.SetActive(false);
 
@@ -95,7 +96,7 @@ public class Result : MonoBehaviour
 
             if(title.text == "당신은 마을을 지켰습니다")
             {
-                SceneManager.LoadScene("Title");
+                SceneManager.LoadScene("Ending");
             }
         }
     }
