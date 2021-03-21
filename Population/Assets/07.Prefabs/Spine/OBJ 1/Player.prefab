@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state:
-    moveSpeed: 0.5
+    moveSpeed: 1
   isCatch: 0
   isNear: 0
   clip_Walk: {fileID: 8300000, guid: 786354d40d535774bb81503329feda5e, type: 3}
