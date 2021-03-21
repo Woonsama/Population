@@ -79,6 +79,7 @@ public class CitizenController : MonoBehaviour
                              (gameData.citizenCnt.womenCnt * 3) +
                              (gameData.citizenCnt.manCnt * 2) +
                              (gameData.citizenCnt.youngCnt * 5)) * (citizenChangePercent.needPointPercent *0.01));
+        gameData.initialPoint = gameData.needPoint;
 
         //토탈 카운트
         gameData.totalHumanCnt = gameData.citizenCnt.GetCurrentCount();
@@ -144,6 +145,8 @@ public class CitizenController : MonoBehaviour
                 break;
         }
 
+        //마이너스 정리
+        gameData.citizenCnt.Arrange();
 
         gameData.currentHumanCnt = gameData.citizenCnt.GetCurrentCount();
 
@@ -155,6 +158,8 @@ public class CitizenController : MonoBehaviour
                              (gameData.citizenCnt.womenCnt * 3) +
                              (gameData.citizenCnt.manCnt * 2) +
                              (gameData.citizenCnt.youngCnt * 5)) * (citizenChangePercent.needPointPercent * 0.01));
+
+        gameData.initialPoint = gameData.needPoint;
         gameData.totalHumanCnt = gameData.citizenCnt.GetCurrentCount();
 
         //정리한 인원 생성
@@ -206,6 +211,7 @@ public class CitizenController : MonoBehaviour
             if (Random.Range(1, 100 + 1) <= citizenChangePercent.oldToDie)
             {
                 gameData.citizenCnt.oldCnt--;
+                gameData.deadOld++;
             }
         }
 
@@ -215,6 +221,7 @@ public class CitizenController : MonoBehaviour
             if (Random.Range(1, 100 + 1) <= citizenChangePercent.manDie)
             {
                 gameData.citizenCnt.manCnt--;
+                gameData.deadAdult++;
             }
         }
 
@@ -224,6 +231,7 @@ public class CitizenController : MonoBehaviour
             if (Random.Range(1, 100 + 1) <= citizenChangePercent.womenDie)
             {
                 gameData.citizenCnt.womenCnt--;
+                gameData.deadAdult++;
             }
         }
 
@@ -233,6 +241,7 @@ public class CitizenController : MonoBehaviour
             if (Random.Range(1, 100 + 1) <= citizenChangePercent.youngDie)
             {
                 gameData.citizenCnt.youngCnt--;
+                gameData.youngDeadCnt++;
             }
         }
 
@@ -245,6 +254,7 @@ public class CitizenController : MonoBehaviour
             {
                 gameData.citizenCnt.youngCnt++;
                 addedCitizenTemp.young++;
+                gameData.totalBornCnt++;
             }
         }
 
@@ -257,6 +267,7 @@ public class CitizenController : MonoBehaviour
                 gameData.citizenCnt.oldCnt++;
 
                 addedCitizenTemp.old++;
+                gameData.totalOldCnt++;
             }
         }
 
@@ -271,6 +282,8 @@ public class CitizenController : MonoBehaviour
                         gameData.citizenCnt.womenCnt++;
                     else
                         gameData.citizenCnt.manCnt++;
+
+                    gameData.comeAdultCnt++;
                 }
             }
         }
@@ -284,6 +297,7 @@ public class CitizenController : MonoBehaviour
                 gameData.citizenCnt.oldCnt++;
 
                 addedCitizenTemp.old++;
+                gameData.totalOldCnt++;
             }
         }
 
@@ -298,6 +312,8 @@ public class CitizenController : MonoBehaviour
                     gameData.citizenCnt.womenCnt++;
                 else
                     gameData.citizenCnt.manCnt++;
+
+                gameData.youngToAdultCnt++;
             }
         }
     }

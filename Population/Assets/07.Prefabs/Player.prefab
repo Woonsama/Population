@@ -99,9 +99,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state:
-    moveSpeed: 0.5
+    moveSpeed: 1
   isCatch: 0
   isNear: 0
+  clip_Walk: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!61 &3192501064948383307
 BoxCollider2D:
   m_ObjectHideFlags: 0

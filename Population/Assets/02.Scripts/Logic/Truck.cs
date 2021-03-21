@@ -94,21 +94,25 @@ public class Truck : ObjectBase
                         dataManager.gameData.citizenCnt.youngCnt--;
                         dataManager.gameData.needPoint -= youngCnt;
                         soundManager.PlayOnShot_YoungTruck(truckSource);
+                        dataManager.gameData.killYoungCnt++;
                         break;
                     case Citizen.ECitizenType.Man:
                         dataManager.gameData.citizenCnt.manCnt--;
                         dataManager.gameData.needPoint -= manCnt;
                         soundManager.PlayOnShot_ManTruck(truckSource);
+                        dataManager.gameData.killAdultCnt++;
                         break;
                     case Citizen.ECitizenType.Women:
                         dataManager.gameData.citizenCnt.womenCnt--;
                         dataManager.gameData.needPoint -= womenCnt;
                         soundManager.PlayOnShot_WomenTruck(truckSource);
+                        dataManager.gameData.killAdultCnt++;
                         break;
                     case Citizen.ECitizenType.Old:
                         dataManager.gameData.citizenCnt.oldCnt--;
                         dataManager.gameData.needPoint -= oldCnt;
                         soundManager.PlayOnShot_OldTruck(truckSource);
+                        dataManager.gameData.killOldCnt++;
                         break;
                     default:
                         break;
