@@ -64,11 +64,15 @@ public class GameManager : MonoBehaviour
         //클리어 까지 대기
         while(!clearManager.isWaveClear)
         {
-            if(dataManager.gameData.currentHumanCnt < dataManager.gameData.minHumanCnt)
+            //if(dataManager.gameData.currentHumanCnt < dataManager.gameData.minHumanCnt ||
+            //    dataManager.gameData.initialPoint <= 4)
+            if (dataManager.gameData.currentHumanCnt < dataManager.gameData.minHumanCnt)
             {
                 //게임 패배
                 resultPopup.SetActive(true);
                 resultPopup.GetComponent<Result>().badeEnding();
+
+                yield break;
             }
             yield return null;
         }

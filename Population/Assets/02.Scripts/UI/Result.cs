@@ -107,32 +107,68 @@ public class Result : MonoBehaviour
         doing = true;
         StartCoroutine("fadeOutIn");
 
+        string str_Event = string.Empty;
+        string str_EventContents = string.Empty;
 
-        title.text = "N 년차 완료";
+
+        switch (dataManager.gameData.eEventType)
+        {
+            case EEventType.HyungZak:
+                str_Event = "흉작";
+                str_EventContents = "이번 라운드에 버려야하는 포인트 +3\n";
+                break;
+            case EEventType.PoongZak:
+                str_Event = "풍작";
+                str_EventContents = "이번 라운드에 버려야하는 포인트 -3\n";
+                break;
+            case EEventType.Festival:
+                str_Event = "축제";
+                str_EventContents = "이번 라운드에 추가된 아이들의 수 * 1.5\n";
+                break;
+            case EEventType.Chosik:
+                str_Event = "초식";
+                str_EventContents = "이번 라운드에 추가된 아이들의 수 * 0.5\n";
+                break;
+            case EEventType.HoiChun:
+                str_Event = "회춘";
+                str_EventContents = "15%의 확률로 노인은 아이가 됩니다\n";
+                break;
+            case EEventType.Goryujang:
+                str_Event = "악습";
+                str_EventContents = "이전 라운드의 노인은 모두 죽은 채로 시작합니다\n";
+                break;
+            case EEventType.None:
+                str_Event = "이벤트가 발생하지 않았습니다";
+                break;
+            default:
+                break;
+        }
+
+        title.text = (dataManager.waveData.wave.curWave - 1) + " 년차 완료";
 
         scripts = new string[3];
 
         scripts[0] = "마을을 유지하기 위해\n"
-                        + "N 명의 어린아이와\n"
-                        + "N 명의 성인\n"
-                        + "N 명의 노인이\n은퇴하였습니다.\n\n"
+                        + dataManager.gameData.citizenCnt.youngCnt + " 명의 어린아이와\n"
+                        + (dataManager.gameData.citizenCnt.manCnt + dataManager.gameData.citizenCnt.manCnt) + " 명의 성인\n"
+                        + dataManager.gameData.citizenCnt.oldCnt + " 명의 노인이\n은퇴하였습니다.\n\n"
                         + "은퇴를 하게 된 그들은\n마을과 당신의 안녕을 빌어주며\n"
                         + "눈물을 짓습니다";
 
-        scripts[1] = "(이벤트 이름)\n"
-                        + "이벤트 설명\n\n"
-                        + "N 명의 어린아이가 출생했습니다.\n"
-                        + "N 명의 어린아이가 자연사하였습니다.\n"
-                        + "N 명의 아이가 성인이 되었습니다.\n"
-                        + "N 명의 성인이 마을에 찾아왔습니다.\n"
-                        + "N 명의 성인이 노인이 되었습니다.\n"
-                        + "N 명의 성인이 자연사하였습니다.\n"
-                        + "N 명의 노인이 노화로 인해 자연사하였습니다.\n";
+        scripts[1] = "(" + str_Event +  ")\n"
+                        + str_EventContents + "\n\n"
+                        + dataManager.gameData.totalBornCnt + " 명의 어린아이가 출생했습니다.\n"
+                        //+ dataManager.gameData.youngDeadCnt + " 명의 어린아이가 자연사하였습니다.\n"
+                        + dataManager.gameData.youngToAdultCnt + " 명의 아이가 성인이 되었습니다.\n"
+                        + dataManager.gameData.comeAdultCnt + " 명의 성인이 마을에 찾아왔습니다.\n"
+                        + dataManager.gameData.totalOldCnt+ " 명의 성인이 노인이 되었습니다.\n"
+                        + dataManager.gameData.deadAdult + " 명의 성인이 자연사하였습니다.\n"
+                        + dataManager.gameData.deadOld + " 명의 노인이 노화로 인해 자연사하였습니다.\n";
         scripts[2] = "현재 주민 수\n\n"
-                        + "아이 : N\n\n"
-                        + "남성 : N\n\n"
-                        + "여성 : N\n\n"
-                        + "노인 : N\n\n";
+                        + "아이 : " + dataManager.gameData.citizenCnt.youngCnt
+                        + "남성 : " + dataManager.gameData.citizenCnt.manCnt
+                        + "여성 : " + dataManager.gameData.citizenCnt.womenCnt
+                        + "노인 : " + dataManager.gameData.citizenCnt.oldCnt;
     }
 
     public void badeEnding()
@@ -178,8 +214,8 @@ public class Result : MonoBehaviour
         scripts[0] = "당신이 지켜낸 마을은 많은 사람들의\n낙원이 되어 줄 것이며\n"
                         + "앞으로도 당신이 관리하는 마을은\n평화를 유지할 것입니다.\n\n"
                         + "하지만 당신이 지켜낸 낙원은\n당신에 의해 '은퇴당한'\n"
-                        + "N 명의 어린아이들과\n"
-                        + "N 명의 성인들\n"
-                        + "N 명의 노인의\n사퇴서 위에 세워졌다는 것을\n기억하시길 바랍니다";
+                        + dataManager.gameData.killYoungCnt + " 명의 어린아이들과\n"
+                        + dataManager.gameData.killAdultCnt + " 명의 성인들\n"
+                        + dataManager.gameData.killOldCnt + " 명의 노인의\n사퇴서 위에 세워졌다는 것을\n기억하시길 바랍니다";
     }
 }
