@@ -9,7 +9,7 @@ public class Canvas_Title : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Kws_Test");
+            SceneManager.LoadScene("Tutorial");
         }
     }
 }
