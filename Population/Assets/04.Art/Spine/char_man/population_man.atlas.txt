@@ -1,34 +1,41 @@
 
 population_man.png
-size: 389,141
+size: 503,260
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 Layer 4
   rotate: true
-  xy: 2, 35
+  xy: 260, 154
   size: 104, 238
   orig: 136, 337
   offset: 32, 0
   index: -1
 arm_left
   rotate: true
-  xy: 106, 12
+  xy: 399, 101
   size: 21, 101
   orig: 21, 101
   offset: 0, 0
   index: -1
 arm_right
   rotate: true
-  xy: 2, 5
+  xy: 399, 124
   size: 28, 102
   orig: 36, 102
   offset: 0, 0
   index: -1
 head
-  rotate: true
-  xy: 242, 2
+  rotate: false
+  xy: 260, 7
   size: 137, 145
   orig: 137, 145
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: false
+  xy: 2, 2
+  size: 256, 256
+  orig: 256, 256
   offset: 0, 0
   index: -1

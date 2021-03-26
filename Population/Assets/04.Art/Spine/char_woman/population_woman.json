@@ -1,11 +1,11 @@
 {
 "skeleton": {
-	"hash": "2WFsHNCs6agwoDqRSdQNbXMiaOg",
+	"hash": "En6KvXTs69oIWH4E6LufjE307ws",
 	"spine": "3.8.99",
 	"x": -81.85,
-	"y": -0.18,
-	"width": 135,
-	"height": 358,
+	"y": -76.8,
+	"width": 158.65,
+	"height": 434.62,
 	"images": "./images/",
 	"audio": "D:/Spine/population_woman"
 },
@@ -14,9 +14,11 @@
 	{ "name": "body", "parent": "root", "x": -6.75, "y": 171.92 },
 	{ "name": "head", "parent": "body", "rotation": 3.27, "x": -5.77, "y": 107.38 },
 	{ "name": "arm_left", "parent": "body", "length": 37.57, "rotation": -104.72, "x": -22.28, "y": 58.57 },
-	{ "name": "arm_right", "parent": "body", "length": 35.06, "rotation": -70.43, "x": 17.72, "y": 59.31 }
+	{ "name": "arm_right", "parent": "body", "length": 35.06, "rotation": -70.43, "x": 17.72, "y": 59.31 },
+	{ "name": "shadow", "parent": "root" }
 ],
 "slots": [
+	{ "name": "shadow", "bone": "shadow", "attachment": "shadow" },
 	{ "name": "arm_right", "bone": "arm_right", "attachment": "arm_right" },
 	{ "name": "arm_left", "bone": "arm_left", "attachment": "arm_left" },
 	{ "name": "Layer 3", "bone": "body", "attachment": "Layer 3" },
@@ -73,12 +75,31 @@
 					"width": 135,
 					"height": 155
 				}
+			},
+			"shadow": {
+				"shadow": {
+					"type": "mesh",
+					"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+					"triangles": [ 1, 2, 3, 1, 3, 0 ],
+					"vertices": [ 1, 5, 76.8, -76.8, 1, 1, 5, -76.8, -76.8, 1, 1, 5, -76.8, 76.8, 1, 1, 5, 76.8, 76.8, 1 ],
+					"hull": 4,
+					"edges": [ 0, 2, 2, 4, 4, 6, 0, 6 ],
+					"width": 256,
+					"height": 256
+				}
 			}
 		}
 	}
 ],
 "animations": {
 	"badoongbadoong": {
+		"slots": {
+			"shadow": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		},
 		"bones": {
 			"root": {
 				"rotate": [

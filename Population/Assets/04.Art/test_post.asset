@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65e486e4de6e5448a8fbb43dc8756a0, type: 3}
   m_Name: Grain
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -58,10 +58,10 @@ MonoBehaviour:
     value: 0.5
   size:
     overrideState: 1
-    value: 1
+    value: 2
   lumContrib:
-    overrideState: 0
-    value: 0.8
+    overrideState: 1
+    value: 1
 --- !u!114 &-287158614778538688
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -127,7 +127,7 @@ MonoBehaviour:
     value: 180
   saturation:
     overrideState: 1
-    value: -90
+    value: -100
   brightness:
     overrideState: 0
     value: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
     value: 0
   contrast:
     overrideState: 1
-    value: 0.03
+    value: 50
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -1437,17 +1437,17 @@ MonoBehaviour:
     overrideState: 1
     value: 0
   color:
-    overrideState: 0
-    value: {r: 0, g: 0, b: 0, a: 1}
+    overrideState: 1
+    value: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 1}
   center:
     overrideState: 0
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.245
+    value: 0.25
   smoothness:
     overrideState: 1
-    value: 1
+    value: 0.81
   roundness:
     overrideState: 0
     value: 1
